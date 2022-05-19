@@ -1,0 +1,21 @@
+.wrapper {
+  max-width: 1260px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+ul, li, a {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
