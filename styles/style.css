@@ -252,6 +252,8 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(80%, rgb(40, 40, 40)), color-stop(80%, rgb(35, 35, 35))), url();
+  background-image: linear-gradient(90deg, rgb(40, 40, 40) 80%, rgb(35, 35, 35) 80%), url();
 }
 body::before {
   z-index: -1;
@@ -341,20 +343,20 @@ header {
   text-align: center;
 }
 
-.heading-text {
+.heading__text {
   -webkit-animation: flicker 1.5s forwards;
           animation: flicker 1.5s forwards;
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
 }
-.heading-text span {
+.heading__text span {
   display: block;
 }
-.heading-text__bar {
+.heading__text--bar {
   -webkit-transform: translate(-40px);
           transform: translate(-40px);
 }
-.heading-text__cart {
+.heading__text--cart {
   -webkit-transform: translate(40px);
           transform: translate(40px);
 }
@@ -363,11 +365,11 @@ footer {
   padding: 10px;
 }
 
-.footer-text {
+.footer__text {
   text-align: center;
   font-size: clamp(1rem, 6vw, 1.5em);
 }
-.footer-text__juno {
+.footer__text--juno {
   color: #ea593e;
   text-decoration: none;
   padding: 10px;

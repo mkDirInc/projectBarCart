@@ -7,16 +7,16 @@ header {
   text-align: center;
 }
 
-.heading-text {
+.heading__text {
   animation: flicker 1.5s forwards;
   transform: rotate(-10deg);
   span {
     display: block;
   }
-  &__bar {
+  &--bar {
     transform: translate(-40px);
   }
-  &__cart {
+  &--cart {
     transform: translate(40px);
   }
 }
