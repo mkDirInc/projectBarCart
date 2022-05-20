@@ -1,0 +1,21 @@
+html {
+  font-size: 125%;
+  color: $white;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Neonderthaw, cursive;
+  font-size: clamp(4rem, 30vw, 8rem);
+}
+
+footer {
+  span {
+    font-family: 'Permanent Market', cursive;
+  }
+}

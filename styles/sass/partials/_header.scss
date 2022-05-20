@@ -1,0 +1,22 @@
+header {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.heading-text {
+  animation: flicker 1.5s forwards;
+  transform: rotate(-10deg);
+  span {
+    display: block;
+  }
+  &__bar {
+    transform: translate(-40px);
+  }
+  &__cart {
+    transform: translate(40px);
+  }
+}

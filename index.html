@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href=".\styles\style.css">
-  <title>Bar Cart - Home Page</title>
-</head>
-<body>
-  <header>
-    <h1>Bar Cart</h1>
-  </header>
-  <main>
-    <form action="submit">
-      <fieldset>
-        <legend>Search by cocktail name or ingredient</legend>
-        <label for="cocktail-name">Cocktail Name</label>
-        <input type="radio" name="search-type" value="cocktail-name" id="cocktail-name">
-        <label for="ingredient">Ingredient</label>
-        <input type="radio" name="search-type" value="ingredient" id="ingredient">
-      </fieldset>
-      <label for="search-bar"></label>
-      <input type="text" name="search-bar" id="search-bar" />
-    </form>
-    <section class="drinks">
-      <ul class="drink__list">
-        <!-- Drink results go here -->
-      </ul>
-    </section>
-  </main>
-  <footer>
-    <p>Made at <a href="https://junocollege.com/" class="juno-link">Juno College</a></p>
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href=".\styles\style.css" />
+    <title>Bar Cart - Home Page</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="heading-text">
+        <span class="heading-text__bar">Bar</span
+        ><span class="heading-text__cart"> Cart</span>
+      </h1>
+    </header>
+    <main>
+      <form action="submit">
+        <fieldset>
+          <legend class="sr-only">Search by cocktail name or ingredient</legend>
+          <label for="cocktail-name">Cocktail Name</label>
+          <input
+            type="radio"
+            name="search-type"
+            value="cocktail-name"
+            id="cocktail-name"
+          />
+          <label for="ingredient">Ingredient</label>
+          <input
+            type="radio"
+            name="search-type"
+            value="ingredient"
+            id="ingredient"
+          />
+        </fieldset>
+        <label for="search-bar" class="sr-only">Search bar</label>
+        <input type="text" name="search-bar" id="search-bar" />
+        <button type="submit">Let's Drink</button>
+      </form>
+      <section class="drinks">
+        <ul class="drink__list">
+          <!-- Drink results go here -->
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Made by <span>Jay</span> and <span>Adam</span> at
+        <span><a href="https://junocollege.com/" class="juno-link">Juno College</a></span>
+      </p>
+    </footer>
+  </body>
 </html>
