@@ -202,15 +202,6 @@ template {
   display: none;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: "";
-  clear: both;
-  height: 0;
-}
-
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -235,11 +226,45 @@ html {
   overflow: hidden;
 }
 
+html {
+  font-size: 125%;
+  color: #fff;
+  text-rendering: optimizeLegibility;
+}
+
 body {
+  font-family: "Permanent Marker", cursive;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Neonderthaw, cursive;
+  font-size: clamp(4rem, 30vw, 8rem);
+}
+
+body {
+  position: relative;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
+}
+body::before {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/manoj-kumar-bricks.jpg") no-repeat center/cover;
+  background: url("../assets/jakob-braun-bricks.jpg") no-repeat center/cover;
+  background: url("../assets/namroud-gorguis-bricks.jpg") no-repeat center/cover;
+  -webkit-filter: grayscale(80%) brightness(10%);
+          filter: grayscale(80%) brightness(10%);
 }
 
 .wrapper {
@@ -263,4 +288,87 @@ ul, li, a {
 
 ul {
   list-style-type: none;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type=radio] {
+  cursor: pointer;
+}
+
+@-webkit-keyframes flicker {
+  74%, 85%, 92%, 96%, 100% {
+    color: #fff;
+    text-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 21px #bbb, 0 0 42px #f09, 0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09, 0 0 200px #f09;
+  }
+  0%, 73%, 75%, 86%, 93%, 97% {
+    color: rgb(46, 46, 46);
+    text-shadow: none;
+  }
+}
+
+@keyframes flicker {
+  74%, 85%, 92%, 96%, 100% {
+    color: #fff;
+    text-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 21px #bbb, 0 0 42px #f09, 0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09, 0 0 200px #f09;
+  }
+  0%, 73%, 75%, 86%, 93%, 97% {
+    color: rgb(46, 46, 46);
+    text-shadow: none;
+  }
+}
+header {
+  min-height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.heading-text {
+  -webkit-animation: flicker 1.5s forwards;
+          animation: flicker 1.5s forwards;
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+.heading-text span {
+  display: block;
+}
+.heading-text__bar {
+  -webkit-transform: translate(-40px);
+          transform: translate(-40px);
+}
+.heading-text__cart {
+  -webkit-transform: translate(40px);
+          transform: translate(40px);
+}
+
+footer {
+  padding: 10px;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: clamp(1rem, 6vw, 1.5em);
+}
+.footer-text__juno {
+  color: #ea593e;
+  text-decoration: none;
+  padding: 10px;
 }
