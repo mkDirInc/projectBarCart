@@ -14,14 +14,14 @@ cocktailApp.getIngredientName = function() {
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
     
+    cocktailApp.drinkList.innerHTML = '';
     // Just left this in here for now
     // when fxn inputUrl is declared, we can delete this and change the fetch structure
     const ingredientType = cocktailApp.userInput.value;
-    console.log(ingredientType);
+  
     // fetch(`inputUrl`)
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientType}`)
     .then((res) => {
-      console.log(res);
       if (res.ok) {
         return res.json();
       } else {
