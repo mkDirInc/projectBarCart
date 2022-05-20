@@ -4,6 +4,10 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+body {
+  font-family: 'Permanent Marker', cursive;
+}
+
 h1, h2, h3, p {
   margin: 0;
   padding: 0;
@@ -12,10 +16,4 @@ h1, h2, h3, p {
 h1 {
   font-family: Neonderthaw, cursive;
   font-size: clamp(4rem, 30vw, 8rem);
-}
-
-footer {
-  span {
-    font-family: 'Permanent Market', cursive;
-  }
 }

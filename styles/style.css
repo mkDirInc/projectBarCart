@@ -232,6 +232,10 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+body {
+  font-family: "Permanent Marker", cursive;
+}
+
 h1, h2, h3, p {
   margin: 0;
   padding: 0;
@@ -240,10 +244,6 @@ h1, h2, h3, p {
 h1 {
   font-family: Neonderthaw, cursive;
   font-size: clamp(4rem, 30vw, 8rem);
-}
-
-footer span {
-  font-family: "Permanent Market", cursive;
 }
 
 body {
@@ -357,4 +357,18 @@ header {
 .heading-text__cart {
   -webkit-transform: translate(40px);
           transform: translate(40px);
+}
+
+footer {
+  padding: 10px;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: clamp(1rem, 6vw, 1.5em);
+}
+.footer-text__juno {
+  color: #ea593e;
+  text-decoration: none;
+  padding: 10px;
 }
