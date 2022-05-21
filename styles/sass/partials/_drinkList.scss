@@ -1,0 +1,24 @@
+.drink__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  &--result {
+    flex: 0 1 calc(100%/5 - 50px);
+    text-align: right;
+    position: relative;
+  }
+  &--thumbnail {
+    min-width: 200px;
+  }
+  &--name {
+    position: absolute;
+    display: block;
+    background-color: rgb(235, 156, 20);
+    right: 0;
+    bottom: 0;
+    color: black;
+    padding: 3px 10px;
+  }
+}

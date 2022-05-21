@@ -25,6 +25,7 @@ cocktailApp.getIngredientName = function() {
   
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
+
         
     fetch(this.getFetchURL())
       .then((res) => {
