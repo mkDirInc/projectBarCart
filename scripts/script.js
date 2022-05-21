@@ -48,7 +48,7 @@ cocktailApp.displayDrinks = function(data) {
   
   // Saving this in the cocktailApp namespace so that we can populate cardbacks with it on demand.
   this.drinks = data.drinks;
-
+  this.drinkList.innerHTML = '';
   this.drinks.forEach((drink) => {
     
     const drinkName = drink.strDrink;
