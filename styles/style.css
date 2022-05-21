@@ -374,3 +374,37 @@ footer {
   text-decoration: none;
   padding: 10px;
 }
+
+.drink__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+}
+.drink__list--result {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 calc(20% - 50px);
+          flex: 0 1 calc(20% - 50px);
+  text-align: right;
+  position: relative;
+}
+.drink__list--thumbnail {
+  min-width: 200px;
+}
+.drink__list--name {
+  position: absolute;
+  display: block;
+  background-color: rgb(235, 156, 20);
+  right: 0;
+  bottom: 0;
+  color: black;
+  padding: 3px 10px;
+}
