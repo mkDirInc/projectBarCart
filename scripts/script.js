@@ -13,7 +13,7 @@ cocktailApp.init = () => {
   cocktailApp.getIngredientName();
 };
 
-cocktailApp.getFetchAddress = function() {
+cocktailApp.getFetchURL = function() {
   const searchTerm = this.userInput.value;
   const searchTypeChoice = document.querySelector('input[name="search-type"]:checked').value;
   
@@ -26,7 +26,7 @@ cocktailApp.getIngredientName = function() {
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
         
-    fetch(this.getFetchAddress())
+    fetch(this.getFetchURL())
       .then((res) => {
         if (res.ok) {
           return res.json();
