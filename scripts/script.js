@@ -91,41 +91,85 @@ cocktailApp.handleCardClick = function () {
   const cardBack = this.querySelector(".back");
   const drinkId = this.id;
   if (cardBack.childElementCount === 0) {
-    cocktailApp.fillCardBack(drinkId, cardBack);
+    cocktailApp.confirmDrinkData(drinkId, cardBack);
   }
   this.classList.toggle("flipped");
 };
 
-cocktailApp.fillCardBack = function (drinkId, cardBack) {
+cocktailApp.confirmDrinkData = async function (drinkId, cardBack) {
   const index = this.drinks.findIndex((drink) => drink.idDrink === drinkId);
-  const drinkData = this.drinks[index];
-  if (drinkData.strIngredient1 === undefined) {
-    // logic for another fetch call goes here
+  const thisDrink = this.drinks[index];
+  if (thisDrink.strIngredient1) {
+    this.fillCardBack(cardBack, thisDrink);
     return;
   }
-  console.log(cardBack);
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error(
+          `Our drink monkeys couldn't find anything. :(`
+        );
+      }
+    })
+    .then((drinkData) => {
+      // thisDrink = drinkData.drinks[0];
+      this.drinks[index] = drinkData.drinks[0];
+      this.fillCardBack(cardBack, this.drinks[index]);
+    })
+    .catch((err) => {
+      alert(`Our drink monkeys couldn't find anything. :(`);
+    });
+  // this.fillCardBack(cardBack, thisDrink);
+};
+
+cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   cardBack.innerHTML = `
     <div class="back__title">
-      <img class="back__img" src="${drinkData.strDrinkThumb}/preview" alt="Photo of a Gin Fizz">
-      <h3 class="back__name">Gin Fizz</h3>
+      <img class="back__img" src="${thisDrink.strDrinkThumb}/preview" alt="Photo of a ${thisDrink.strDrink}">
+      <h3 class="back__name">${thisDrink.strDrink}</h3>
     </div>
     <div class="back__recipe">
       <h4 class="back__heading">Ingredients</h4>
       <ul class="back__ingredients"></ul>
       <h4 class="back__heading">Instructions</h4>
-      <p class="back__instructions">${drinkData.strInstructions}</p>
+      <p class="back__instructions">${thisDrink.strInstructions}</p>
     </div>
   `;
-  const ingredientList = cardBack.querySelector('.ingredients');
   for (let i = 1; i < 16; i += 1) {
-    const ingredient = drinkData[`strIngredient${i}`];
+    const ingredient = thisDrink[`strIngredient${i}`];
     if (ingredient === null) break;
-
-    console.log(ingredient);
-    const measure = drinkData[`strMeasure${i}`];
-    document.createElement('li');
+    const ingredientListElement = document.createElement('li');
+    const measure = thisDrink[`strMeasure${i}`];
+    if (measure) {
+      ingredientListElement.textContent = `${measure} ${ingredient}`;
+    } else {
+      ingredientListElement.textContent = ingredient;
+    }
+    const ingredientList = cardBack.querySelector('.back__ingredients');
+    ingredientList.append(ingredientListElement);
   }
-};
+}
+
+cocktailApp.fetchById = async function(drinkId) {
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error(
+          `Our drink monkeys couldn't find anything. :(`
+        );
+      }
+    })
+    .then((drinkData) => {
+      return drinkData[0];
+    })
+    .catch((err) => {
+      alert(`Our drink monkeys couldn't find anything. :(`);
+    })
+}
 
 cocktailApp.init();
 
