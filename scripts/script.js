@@ -64,6 +64,7 @@ cocktailApp.displayDrinks = function (data) {
     const listElement = document.createElement("li");
     listElement.id = drink.idDrink;
     listElement.classList.add("drink");
+    // Note to Jay: I believe using innerHTML is fine here, as all content is provided by the API, rather than the user. I could be wrong. Let me know what you think.
     listElement.innerHTML = `
       <div class="drink__content">
         <div class="front drink__list--result">
@@ -93,43 +94,45 @@ cocktailApp.displayDrinks = function (data) {
   });
 };
 
+// This callback function supplied to card event listeners.
 cocktailApp.handleCardClick = function () {
   const cardBack = this.querySelector(".back");
-  const drinkId = this.id;
+  // If the cardback has no content, send it through control flow that confirms the data, then displays it.
   if (cardBack.childElementCount === 0) {
-    cocktailApp.confirmDrinkData(drinkId, cardBack);
+    cocktailApp.confirmDrinkData(this.id, cardBack);
   }
   this.classList.toggle("flipped");
 };
 
-cocktailApp.confirmDrinkData = async function (drinkId, cardBack) {
+// This confirms that the cached drinked data is complete before passing it along fillCardBack().
+cocktailApp.confirmDrinkData = function (drinkId, cardBack) {
+  // Use the drink id to find it in the cached data.
   const index = this.drinks.findIndex((drink) => drink.idDrink === drinkId);
   const thisDrink = this.drinks[index];
+  // If the data has at least one ingredient, it is considered complete and ready to display.
   if (thisDrink.strIngredient1) {
     this.fillCardBack(cardBack, thisDrink);
     return;
   }
+  // Otherwise, fetch updated drink details from the API.
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
     .then((res) => {
       if (res.ok) {
         return res.json()
       } else {
-        throw new Error(
-          `Our drink monkeys couldn't find anything. :(`
-        );
+        throw new Error(`Our drink monkeys couldn't find anything. Sorry. :(`);
       }
     })
     .then((drinkData) => {
-      // thisDrink = drinkData.drinks[0];
       this.drinks[index] = drinkData.drinks[0];
       this.fillCardBack(cardBack, this.drinks[index]);
     })
     .catch((err) => {
-      alert(`Our drink monkeys couldn't find anything. :(`);
+      alert(`Our drink monkeys couldn't find anything. Sorry. :(`);
     });
-  // this.fillCardBack(cardBack, thisDrink);
 };
 
+// Fills the innerHTML of a clicked card's cardback
 cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   cardBack.innerHTML = `
     <div class="back__title">
@@ -143,38 +146,23 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
       <p class="back__instructions">${thisDrink.strInstructions}</p>
     </div>
   `;
+  // Compiles the drink's list of ingredients and optional measures.
   for (let i = 1; i < 16; i += 1) {
     const ingredient = thisDrink[`strIngredient${i}`];
     if (ingredient === null) break;
+    
     const ingredientListElement = document.createElement('li');
+    
     const measure = thisDrink[`strMeasure${i}`];
     if (measure) {
       ingredientListElement.textContent = `${measure} ${ingredient}`;
     } else {
       ingredientListElement.textContent = ingredient;
     }
+
     const ingredientList = cardBack.querySelector('.back__ingredients');
     ingredientList.append(ingredientListElement);
   }
-}
-
-cocktailApp.fetchById = async function(drinkId) {
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        throw new Error(
-          `Our drink monkeys couldn't find anything. :(`
-        );
-      }
-    })
-    .then((drinkData) => {
-      return drinkData[0];
-    })
-    .catch((err) => {
-      alert(`Our drink monkeys couldn't find anything. :(`);
-    })
 }
 
 cocktailApp.init();
