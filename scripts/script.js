@@ -4,7 +4,6 @@ cocktailApp.searchTypes = {};
 cocktailApp.searchTypes.name = "/api/json/v1/1/search.php?s=";
 cocktailApp.searchTypes.ingredient = "/api/json/v1/1/filter.php?i=";
 cocktailApp.endpoint = "https://www.thecocktaildb.com";
-cocktailApp.ingredientPath = "/api/json/v1/1/filter.php";
 cocktailApp.form = document.querySelector("form");
 cocktailApp.drinkList = document.querySelector(".drink__list");
 cocktailApp.userInput = document.getElementById("search-bar");
@@ -13,6 +12,7 @@ cocktailApp.init = () => {
   cocktailApp.getIngredientName();
 };
 
+// Compiles and returns fetch URL based on user's search parameters.
 cocktailApp.getFetchURL = function () {
   const searchTerm = this.userInput.value;
   const searchTypeChoice = document.querySelector(
@@ -22,7 +22,8 @@ cocktailApp.getFetchURL = function () {
   return `${this.endpoint}${this.searchTypes[searchTypeChoice]}${searchTerm}`;
 };
 
-// Get user's input and fetch the data from API
+// This adds an event listener to form submission:
+// On submit: fetch searched data from API and passes it on to be displayed.
 cocktailApp.getIngredientName = function () {
   cocktailApp.form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -47,10 +48,15 @@ cocktailApp.getIngredientName = function () {
   });
 };
 
+// For each drink in the provided data, this appends a card to .drink__list.
+// Each card is given a click event listener so that it can be flipped to its instructions side
 cocktailApp.displayDrinks = function (data) {
-  // Saving this in the cocktailApp namespace so that we can populate cardbacks with it on demand.
+
+  // Caching drink data into the cocktailApp namespace so that it can be used to fill card backs later.
   this.drinks = data.drinks;
+  // Empty drink list before appending new drinks
   this.drinkList.innerHTML = "";
+  // Append click-ready cards to .drink__list
   this.drinks.forEach((drink) => {
     const drinkName = drink.strDrink;
     const drinkImg = drink.strDrinkThumb;
@@ -68,21 +74,21 @@ cocktailApp.displayDrinks = function (data) {
         </div>
       </div>
     `;
-    listElement.addEventListener("click", cocktailApp.handleCardClick);
     // const drinkResultList = document.createElement('li');
     // drinkResultList.classList.add('drink__list--result');
-
+    
     // const drinkResultImg = document.createElement('img');
     // drinkResultImg.classList.add('drink__list--thumbnail');
-
+    
     // const drinkResultName = document.createElement('p');
     // drinkResultName.classList.add('drink__list--name');
-
+    
     // drinkResultImg.src = `${drinkImg}`;
     // drinkResultImg.alt = `${drinkName}`;
     // drinkResultName.innerHTML = `${drinkName}`;
-
+    
     // drinkResultList.append(drinkResultImg, drinkResultName);
+    listElement.addEventListener("click", cocktailApp.handleCardClick);
     cocktailApp.drinkList.append(listElement);
   });
 };
