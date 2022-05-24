@@ -375,26 +375,25 @@ footer {
   padding: 10px;
 }
 
+.drink__container {
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
 .drink__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 50px;
+  position: relative;
+  height: 100%;
 }
 .drink__list--result {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 calc(20% - 50px);
-          flex: 0 1 calc(20% - 50px);
+  position: absolute;
   text-align: right;
-  position: relative;
+  width: 500px;
+  height: 500px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .drink__list--thumbnail {
   min-width: 200px;
@@ -407,4 +406,26 @@ footer {
   bottom: 0;
   color: black;
   padding: 3px 10px;
+}
+
+.prevArrow,
+.nxtArrow {
+  color: rgb(235, 156, 20);
+  font-size: 5rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.prevArrow {
+  left: 20%;
+  -webkit-transform: translateX(-20%);
+          transform: translateX(-20%);
+}
+
+.nxtArrow {
+  right: 20%;
+  -webkit-transform: translateX(20%);
+          transform: translateX(20%);
 }
