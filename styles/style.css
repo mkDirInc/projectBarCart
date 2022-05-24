@@ -415,13 +415,6 @@ footer {
 .drink {
   width: 300px;
   height: 400px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-perspective: 1000px;
@@ -467,37 +460,60 @@ footer {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   background: gray;
-  padding: 3rem 1.5rem 1rem;
+  padding: 0 1.5rem 1rem;
 }
 .drink .back__img {
-  width: 40%;
-  position: absolute;
-  border-radius: 50%;
-  -webkit-transform: rotate(20deg);
-          transform: rotate(20deg);
-  top: -30px;
-  right: -30px;
   z-index: -1;
+  width: 100%;
+  margin: 0 auto -40% auto;
+  border-radius: 50%;
+  -webkit-transform: rotate(20deg) translate(-17%, -50%);
+          transform: rotate(20deg) translate(-17%, -50%);
 }
 .drink .back__name {
   position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-family: "Mr Dafoe";
-  font-size: 4rem;
   color: #FFC60D;
   text-shadow: 3px 3px #588DC0;
-  -webkit-transform: rotate(-15deg);
-          transform: rotate(-15deg);
-  top: -30px;
-  left: -40px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.drink .back__name--xlong {
+  font-size: 2.2rem;
+  -webkit-transform: rotate(-10deg) translateY(-60px);
+          transform: rotate(-10deg) translateY(-60px);
+}
+.drink .back__name--long {
+  font-size: 2.2rem;
+  -webkit-transform: rotate(-10deg) translateY(-50px);
+          transform: rotate(-10deg) translateY(-50px);
+}
+.drink .back__name--medium {
+  font-size: 3rem;
+  -webkit-transform: rotate(-10deg) translateY(-50px);
+          transform: rotate(-10deg) translateY(-50px);
+}
+.drink .back__name--short {
+  font-size: 3rem;
+  -webkit-transform: rotate(-10deg) translateY(-45px);
+          transform: rotate(-10deg) translateY(-45px);
 }
 .drink .back__heading {
   font-family: "Permanent Marker";
   font-size: 1.8rem;
-  margin: 20px 0 10px;
+  margin-bottom: 10px;
 }
 .drink .back__ingredients {
   list-style-type: "– ";
   margin-left: 30px;
+  margin-bottom: 20px;
 }
 .drink .back__instructions {
   margin-left: 10px;

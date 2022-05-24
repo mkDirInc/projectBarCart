@@ -148,6 +148,7 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   backImg.alt = `Photo of a ${thisDrink.strDrink}`;
   const backName = cardBack.querySelector('.back__name');
   backName.textContent = thisDrink.strDrink;
+  backName.classList.add(this.getCardBackFontClass(thisDrink.strDrink));
   const backInstructions = cardBack.querySelector('.back__instructions');
   backInstructions.textContent = thisDrink.strInstructions
   
@@ -169,6 +170,13 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
     
     backIngredients.append(ingredientListElement);
   }
+}
+
+cocktailApp.getCardBackFontClass = function(strDrink) {
+  if (strDrink.length < 10) return 'back__name--short';
+  if (strDrink.length < 14) return 'back__name--medium';
+  if (strDrink.length < 22) return 'back__name--long';
+  return 'back__name--xlong';
 }
 
 cocktailApp.init();
