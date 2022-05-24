@@ -1,66 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Permanent+Marker&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href=".\styles\style.css" />
-    <script src="https://kit.fontawesome.com/daf18e1bf9.js" crossorigin="anonymous"></script>
-    <title>Bar Cart - Home Page</title>
-  </head>
-  <body>
-    <header>
-      <h1 class="heading__text">
-        <span class="heading__text--bar">Bar</span>
-        <span class="heading__text--cart"> Cart</span>
-      </h1>
-    </header>
-    <main>
-      <form action="submit">
-        <fieldset>
-          <legend class="sr-only">Search by cocktail name or ingredient</legend>
-          <label for="name">Cocktail Name</label>
-          <input
-            type="radio"
-            name="search-type"
-            value="name"
-            id="name"
-            checked
-          />
-          <label for="ingredient">Ingredient</label>
-          <input
-            type="radio"
-            name="search-type"
-            value="ingredient"
-            id="ingredient"
-          />
-        </fieldset>
-        <label for="search-bar" class="sr-only">Search bar</label>
-        <input type="text" name="search-bar" id="search-bar" required />
-        <button type="submit">Let's Drink</button>
-      </form>
-      <section class="drinks">
-        <div class="drink__container">
-          <ul class="drink__list">
-            <!-- Drink results go here -->
-          </ul>
-          <i class="prevArrow fa-solid fa-caret-left"></i>
-          <i class="nxtArrow fa-solid fa-caret-right"></i>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p class="footer__text">
-          Created at <a href="https://junocollege.com/" class="footer__text--juno">Juno College
-        </a>
-      </p>
-    </footer>
-    <script src="./scripts/script.js"></script>
-  </body>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Neonderthaw&family=Permanent+Marker&family=Raleway&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>Bar Cart - Home Page</title>
+</head>
+
+<body>
+  <header>
+    <h1 class="heading__text">
+      <span class="heading__text--bar">Bar</span>
+      <span class="heading__text--cart"> Cart</span>
+    </h1>
+  </header>
+  <main>
+    <form action="submit">
+      <fieldset>
+        <legend class="sr-only">Search by cocktail name or ingredient</legend>
+        <label for="name">Cocktail Name</label>
+        <input type="radio" name="search-type" value="name" id="name" checked />
+        <label for="ingredient">Ingredient</label>
+        <input type="radio" name="search-type" value="ingredient" id="ingredient" />
+      </fieldset>
+      <label for="search-bar" class="sr-only">Search bar</label>
+      <input type="text" name="search-bar" id="search-bar" required />
+      <button type="submit">Let's Drink</button>
+    </form>
+    <section class="drinks">
+      <!-- HTML Validator recommends adding a heading here. Something to consider. -->
+      <ul class="drink__list">
+        <!-- Drink results go here -->
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p class="footer__text">
+      Created at <a href="https://junocollege.com/" class="footer__text--juno">Juno College
+      </a>
+    </p>
+  </footer>
+  <script src="./scripts/script.js"></script>
+</body>
+
 </html>
