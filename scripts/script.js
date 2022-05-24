@@ -66,7 +66,7 @@ cocktailApp.displayDrinks = function (data) {
     listElement.innerHTML = `
       <div class="drink__content">
         <div class="front drink__list--result">
-          <img class="front__img drink__list--thumbnail" />
+          <img class="front__img drink__list--thumbnail" loading="lazy" />
           <h3 class="front__name drink__list--name"></h3>
         </div>
         <div class="back">
@@ -131,7 +131,7 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   // Fill the cardBack's HTML
   cardBack.innerHTML = `
     <div class="back__title">
-      <img class="back__img" />
+      <img class="back__img" loading="lazy" />
       <h3 class="back__name"></h3>
     </div>
     <div class="back__recipe">
