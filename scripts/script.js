@@ -1,12 +1,12 @@
 const cocktailApp = {};
 cocktailApp.drinks = {};
 cocktailApp.searchTypes = {};
-cocktailApp.searchTypes.name = "/api/json/v1/1/search.php?s=";
-cocktailApp.searchTypes.ingredient = "/api/json/v1/1/filter.php?i=";
-cocktailApp.endpoint = "https://www.thecocktaildb.com";
-cocktailApp.form = document.querySelector("form");
-cocktailApp.drinkList = document.querySelector(".drink__list");
-cocktailApp.userInput = document.getElementById("search-bar");
+cocktailApp.searchTypes.name = '/api/json/v1/1/search.php?s=';
+cocktailApp.searchTypes.ingredient = '/api/json/v1/1/filter.php?i=';
+cocktailApp.endpoint = 'https://www.thecocktaildb.com';
+cocktailApp.form = document.querySelector('form');
+cocktailApp.drinkList = document.querySelector('.drink__list');
+cocktailApp.userInput = document.getElementById('search-bar');
 
 cocktailApp.init = () => {
   cocktailApp.getIngredientName();
@@ -25,7 +25,7 @@ cocktailApp.getFetchURL = function () {
 // This adds an event listener to form submission:
 // On submit: fetch searched data from API and passes it on to be displayed.
 cocktailApp.getIngredientName = function () {
-  cocktailApp.form.addEventListener("submit", (e) => {
+  cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     fetch(this.getFetchURL())
@@ -55,15 +55,15 @@ cocktailApp.displayDrinks = function (data) {
   // Caching drink data into the cocktailApp namespace so that it can be used to fill card backs later.
   this.drinks = data.drinks;
   // Empty drink list before appending new drinks
-  this.drinkList.innerHTML = "";
+  this.drinkList.innerHTML = '';
   // Append click-ready cards to .drink__list
   this.drinks.forEach((drink) => {
     const drinkName = drink.strDrink;
     const drinkImg = drink.strDrinkThumb;
 
-    const listElement = document.createElement("li");
+    const listElement = document.createElement('li');
     listElement.id = drink.idDrink;
-    listElement.classList.add("drink");
+    listElement.classList.add('drink');
     // Note to Jay: I believe using innerHTML is fine here, as all content is provided by the API, rather than the user. I could be wrong. Let me know what you think.
     listElement.innerHTML = `
       <div class="drink__content">
@@ -89,19 +89,19 @@ cocktailApp.displayDrinks = function (data) {
     // drinkResultName.innerHTML = `${drinkName}`;
     
     // drinkResultList.append(drinkResultImg, drinkResultName);
-    listElement.addEventListener("click", cocktailApp.handleCardClick);
+    listElement.addEventListener('click', cocktailApp.handleCardClick);
     cocktailApp.drinkList.append(listElement);
   });
 };
 
 // This callback function supplied to card event listeners.
 cocktailApp.handleCardClick = function () {
-  const cardBack = this.querySelector(".back");
+  const cardBack = this.querySelector('.back');
   // If the cardback has no content, send it through control flow that confirms the data, then displays it.
   if (cardBack.childElementCount === 0) {
     cocktailApp.confirmDrinkData(this.id, cardBack);
   }
-  this.classList.toggle("flipped");
+  this.classList.toggle('flipped');
 };
 
 // This confirms that the cached drinked data is complete before passing it along fillCardBack().
