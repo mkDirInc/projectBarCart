@@ -5,10 +5,10 @@ html {
 }
 
 body {
-  font-family: 'Permanent Marker', cursive;
+  font-family: Raleway, cursive;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
   margin: 0;
   padding: 0;
 }
@@ -16,4 +16,5 @@ h1, h2, h3, p {
 h1 {
   font-family: Neonderthaw, cursive;
   font-size: clamp(4rem, 30vw, 8rem);
+  letter-spacing: clamp(-0.15rem, -0.5vw, 0.1rem);
 }
