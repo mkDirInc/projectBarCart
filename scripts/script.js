@@ -8,6 +8,9 @@ cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkList = document.querySelector('.drink__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 
+cocktailApp.nxtBtn = document.querySelector('.nxtArrow');
+cocktailApp.prevBtn = document.querySelector('.prevArrow');
+
 cocktailApp.init = () => {
   cocktailApp.getIngredientName();
 };
@@ -58,39 +61,68 @@ cocktailApp.displayDrinks = function (data) {
   this.drinkList.innerHTML = '';
   // Append click-ready cards to .drink__list
   this.drinks.forEach((drink) => {
-    const drinkName = drink.strDrink;
-    const drinkImg = drink.strDrinkThumb;
 
+    // Create list element and its HTML
     const listElement = document.createElement('li');
     listElement.id = drink.idDrink;
     listElement.classList.add('drink');
-    // Note to Jay: I believe using innerHTML is fine here, as all content is provided by the API, rather than the user. I could be wrong. Let me know what you think.
     listElement.innerHTML = `
       <div class="drink__content">
         <div class="front drink__list--result">
-          <img class="front__img drink__list--thumbnail" src="${drinkImg}/preview" alt="Photo of ${drinkName}">
-          <h3 class="front__name drink__list--name">${drinkName}</p>
+          <img class="front__img drink__list--thumbnail" />
+          <h3 class="front__name drink__list--name"></h3>
         </div>
         <div class="back">
         </div>
       </div>
     `;
-    // const drinkResultList = document.createElement('li');
-    // drinkResultList.classList.add('drink__list--result');
     
-    // const drinkResultImg = document.createElement('img');
-    // drinkResultImg.classList.add('drink__list--thumbnail');
-    
-    // const drinkResultName = document.createElement('p');
-    // drinkResultName.classList.add('drink__list--name');
-    
-    // drinkResultImg.src = `${drinkImg}`;
-    // drinkResultImg.alt = `${drinkName}`;
-    // drinkResultName.innerHTML = `${drinkName}`;
-    
-    // drinkResultList.append(drinkResultImg, drinkResultName);
+    // Pass API content to list's HTML elements
+    const frontImg = listElement.querySelector('.front__img');
+    frontImg.src = `${drink.strDrinkThumb}/preview`;
+    frontImg.alt = `Photo of a ${drink.strDrink}`;
+    const frontName = listElement.querySelector('.front__name');
+    frontName.textContent = drink.strDrink;
+
+    // Add an event listener and append to the page
     listElement.addEventListener('click', cocktailApp.handleCardClick);
     cocktailApp.drinkList.append(listElement);
+  });
+
+  // carousel list
+    // call imgResult List in array
+  cocktailApp.slideImg = Array.from(cocktailApp.drinkList.children);
+    // adding currentPic class on first img result list
+  cocktailApp.slideImg[0].classList.add('current__pic');
+    // setting initial slideSize
+  cocktailApp.slideSize = cocktailApp.slideImg[0].clientWidth;
+    // by using forEach(), setting each img size
+  cocktailApp.slideImg.forEach((pic, i) => {
+    pic.style.left = cocktailApp.slideSize * i +'px';
+  });
+  // cocktailApp.movePic = (drinkList, currentPic, targetPic) => {
+  //   this.drinkList.style.transform = 'translateX(-' + targetPic.style.left + ')';
+  //   currentPic.classList.remove('current__pic');
+  //   targetPic.classList.add('current__pic');
+  // }
+  cocktailApp.nxtBtn.addEventListener('click', e => {
+    const currentPic = cocktailApp.drinkList.querySelector('.current__pic');
+    const nxtPic = currentPic.nextElementSibling;
+    const sizeToSlide = nxtPic.style.left;
+    cocktailApp.drinkList.style.transform = 'translateX(-' + sizeToSlide + ')';
+    currentPic.classList.remove('current__pic');
+    nxtPic.classList.add('current__pic');
+    // cocktailApp.movePic(drinkList, currentPic, nxtPic);
+  });
+
+  cocktailApp.prevBtn.addEventListener('click', e => {
+    const currentPic = cocktailApp.drinkList.querySelector('.current__pic');
+    const nxtPic = currentPic.previousElementSibling;
+    const sizeToSlide = nxtPic.style.left;
+    cocktailApp.drinkList.style.transform = 'translateX(-' + sizeToSlide + ')';
+    currentPic.classList.remove('current__pic');
+    nxtPic.classList.add('current__pic');
+    // cocktailApp.movePic(drinkList, currentPic, nxtPic);
   });
 };
 
@@ -134,21 +166,35 @@ cocktailApp.confirmDrinkData = function (drinkId, cardBack) {
 
 // Fills the innerHTML of a clicked card's cardback
 cocktailApp.fillCardBack = function (cardBack, thisDrink) {
+
+  // Fill the cardBack's HTML
   cardBack.innerHTML = `
     <div class="back__title">
-      <img class="back__img" src="${thisDrink.strDrinkThumb}/preview" alt="Photo of a ${thisDrink.strDrink}">
-      <h3 class="back__name">${thisDrink.strDrink}</h3>
+      <img class="back__img" />
+      <h3 class="back__name"></h3>
     </div>
     <div class="back__recipe">
       <h4 class="back__heading">Ingredients</h4>
       <ul class="back__ingredients"></ul>
       <h4 class="back__heading">Instructions</h4>
-      <p class="back__instructions">${thisDrink.strInstructions}</p>
+      <p class="back__instructions"></p>
     </div>
   `;
-  // Compiles the drink's list of ingredients and optional measures.
+
+  // Pass API content to the cardBack's HTML elements
+  const backImg = cardBack.querySelector('.back__img');
+  backImg.src = `${thisDrink.strDrinkThumb}/preview`;
+  backImg.alt = `Photo of a ${thisDrink.strDrink}`;
+  const backName = cardBack.querySelector('.back__name');
+  backName.textContent = thisDrink.strDrink;
+  const backInstructions = cardBack.querySelector('.back__instructions');
+  backInstructions.textContent = thisDrink.strInstructions
+  
+  // Compile the drink's list of ingredients and optional measures
+  const backIngredients = cardBack.querySelector('.back__ingredients');
   for (let i = 1; i < 16; i += 1) {
     const ingredient = thisDrink[`strIngredient${i}`];
+    // If there are no ingredients left to add, quit the for loop
     if (ingredient === null) break;
     
     const ingredientListElement = document.createElement('li');
@@ -159,9 +205,8 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
     } else {
       ingredientListElement.textContent = ingredient;
     }
-
-    const ingredientList = cardBack.querySelector('.back__ingredients');
-    ingredientList.append(ingredientListElement);
+    
+    backIngredients.append(ingredientListElement);
   }
 }
 
