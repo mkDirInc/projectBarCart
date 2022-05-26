@@ -378,24 +378,21 @@ footer {
   padding: 10px;
 }
 
+.drink__container {
+  height: 500px;
+  position: relative;
+}
+
 .drink__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 50px;
+  position: relative;
+  height: 100%;
 }
 .drink__list--result {
+  -ms-flex-item-align: center;
+      align-self: center;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 calc(20% - 50px);
-          flex: 0 1 calc(20% - 50px);
+      -ms-flex: 0 1 calc(50% - 50px);
+          flex: 0 1 calc(50% - 50px);
   text-align: right;
   position: relative;
 }
@@ -435,6 +432,8 @@ footer {
   transition: transform 1s, -webkit-transform 1s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  left: 400px;
+  top: 200px;
 }
 .drink .front,
 .drink .back {
@@ -517,4 +516,26 @@ footer {
 }
 .drink .back__instructions {
   margin-left: 10px;
+}
+
+.prevArrow,
+.nxtArrow {
+  color: rgb(235, 156, 20);
+  font-size: 5rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.prevArrow {
+  left: 20%;
+  -webkit-transform: translateX(-20%);
+          transform: translateX(-20%);
+}
+
+.nxtArrow {
+  right: 20%;
+  -webkit-transform: translateX(20%);
+          transform: translateX(20%);
 }
