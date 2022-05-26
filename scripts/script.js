@@ -8,9 +8,6 @@ cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkList = document.querySelector('.drink__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 
-cocktailApp.nxtBtn = document.querySelector('.nxtArrow');
-cocktailApp.prevBtn = document.querySelector('.prevArrow');
-
 cocktailApp.init = () => {
   cocktailApp.getIngredientName();
 };
@@ -69,7 +66,7 @@ cocktailApp.displayDrinks = function (data) {
     listElement.innerHTML = `
       <div class="drink__content">
         <div class="front drink__list--result">
-          <img class="front__img drink__list--thumbnail" />
+          <img class="front__img drink__list--thumbnail" loading="lazy" />
           <h3 class="front__name drink__list--name"></h3>
         </div>
         <div class="back">
@@ -87,42 +84,6 @@ cocktailApp.displayDrinks = function (data) {
     // Add an event listener and append to the page
     listElement.addEventListener('click', cocktailApp.handleCardClick);
     cocktailApp.drinkList.append(listElement);
-  });
-
-  // carousel list
-    // call imgResult List in array
-  cocktailApp.slideImg = Array.from(cocktailApp.drinkList.children);
-    // adding currentPic class on first img result list
-  cocktailApp.slideImg[0].classList.add('current__pic');
-    // setting initial slideSize
-  cocktailApp.slideSize = cocktailApp.slideImg[0].clientWidth;
-    // by using forEach(), setting each img size
-  cocktailApp.slideImg.forEach((pic, i) => {
-    pic.style.left = cocktailApp.slideSize * i +'px';
-  });
-  // cocktailApp.movePic = (drinkList, currentPic, targetPic) => {
-  //   this.drinkList.style.transform = 'translateX(-' + targetPic.style.left + ')';
-  //   currentPic.classList.remove('current__pic');
-  //   targetPic.classList.add('current__pic');
-  // }
-  cocktailApp.nxtBtn.addEventListener('click', e => {
-    const currentPic = cocktailApp.drinkList.querySelector('.current__pic');
-    const nxtPic = currentPic.nextElementSibling;
-    const sizeToSlide = nxtPic.style.left;
-    cocktailApp.drinkList.style.transform = 'translateX(-' + sizeToSlide + ')';
-    currentPic.classList.remove('current__pic');
-    nxtPic.classList.add('current__pic');
-    // cocktailApp.movePic(drinkList, currentPic, nxtPic);
-  });
-
-  cocktailApp.prevBtn.addEventListener('click', e => {
-    const currentPic = cocktailApp.drinkList.querySelector('.current__pic');
-    const nxtPic = currentPic.previousElementSibling;
-    const sizeToSlide = nxtPic.style.left;
-    cocktailApp.drinkList.style.transform = 'translateX(-' + sizeToSlide + ')';
-    currentPic.classList.remove('current__pic');
-    nxtPic.classList.add('current__pic');
-    // cocktailApp.movePic(drinkList, currentPic, nxtPic);
   });
 };
 
@@ -170,7 +131,7 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   // Fill the cardBack's HTML
   cardBack.innerHTML = `
     <div class="back__title">
-      <img class="back__img" />
+      <img class="back__img" loading="lazy" />
       <h3 class="back__name"></h3>
     </div>
     <div class="back__recipe">
@@ -187,6 +148,7 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   backImg.alt = `Photo of a ${thisDrink.strDrink}`;
   const backName = cardBack.querySelector('.back__name');
   backName.textContent = thisDrink.strDrink;
+  backName.classList.add(this.getCardBackFontClass(thisDrink.strDrink));
   const backInstructions = cardBack.querySelector('.back__instructions');
   backInstructions.textContent = thisDrink.strInstructions
   
@@ -208,6 +170,13 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
     
     backIngredients.append(ingredientListElement);
   }
+}
+
+cocktailApp.getCardBackFontClass = function(strDrink) {
+  if (strDrink.length < 10) return 'back__name--short';
+  if (strDrink.length < 14) return 'back__name--medium';
+  if (strDrink.length < 22) return 'back__name--long';
+  return 'back__name--xlong';
 }
 
 cocktailApp.init();
