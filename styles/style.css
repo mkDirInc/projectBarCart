@@ -386,6 +386,10 @@ footer {
   position: relative;
 }
 
+.drink__list {
+  position: relative;
+  inset: 150px;
+}
 .drink__list--result {
   text-align: right;
   position: relative;

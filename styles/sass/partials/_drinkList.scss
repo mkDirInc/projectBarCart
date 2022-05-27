@@ -5,13 +5,9 @@
 }
 
 .drink__list {
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // align-items: center;
-  // gap: 50px;
+  position: relative;
+  inset: 150px;
   &--result {
-    // flex: 0 1 calc(100%/5 - 50px);
     text-align: right;
     position: relative;
   }
