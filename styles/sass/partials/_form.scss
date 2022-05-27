@@ -56,3 +56,23 @@ label {
   color: rgba(255, 255, 255, $alpha: 0.4);
   padding: 25px;
 }
+
+button {
+  text-transform: uppercase;
+  background: $teal;
+  color: $white;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-color: $white;
+  margin-top: 20px;
+  box-shadow: 0px 5px 10px $dustyOrange;
+  &:hover,
+  &:focus {
+    background-color: rgba($color: $darkRed, $alpha: 0.3);
+  }
+}
+
+.button--clicked {
+  background-color: rgba($color: $darkRed, $alpha: 1);
+  box-shadow: 0px 1px 2px $dustyOrange;
+}

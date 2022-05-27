@@ -7,8 +7,9 @@ cocktailApp.endpoint = 'https://www.thecocktaildb.com';
 cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkList = document.querySelector('.drink__list');
 cocktailApp.userInput = document.getElementById('search-bar');
+cocktailApp.submitButton = cocktailApp.form.querySelector('button');
 
-// calling all button elements
+// calling all arrow icon/button elements
 const buttons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
@@ -31,6 +32,8 @@ cocktailApp.getIngredientName = function () {
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    this.submitButton.classList.toggle('button--clicked');
+    
     fetch(this.getFetchURL())
       .then((res) => {
         if (res.ok) {
@@ -186,7 +189,7 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
   for (let i = 1; i < 16; i += 1) {
     const ingredient = thisDrink[`strIngredient${i}`];
     // If there are no ingredients left to add, quit the for loop
-    if (ingredient === null) break;
+    if (ingredient === null || ingredient === '') break;
     
     const ingredientListElement = document.createElement('li');
     

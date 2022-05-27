@@ -267,8 +267,8 @@ body::before {
   background: url("../assets/manoj-kumar-bricks.jpg") no-repeat center/cover;
   background: url("../assets/jakob-braun-bricks.jpg") no-repeat center/cover;
   background: url("../assets/namroud-gorguis-bricks.jpg") no-repeat center/cover;
-  -webkit-filter: grayscale(80%) brightness(10%);
-          filter: grayscale(80%) brightness(10%);
+  -webkit-filter: grayscale(60%) brightness(25%);
+          filter: grayscale(60%) brightness(25%);
 }
 
 .wrapper {
@@ -332,7 +332,7 @@ input[type=radio] {
 @-webkit-keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
     color: #fff;
-    text-shadow: 0 0 7px #bbb, 0 0 5px #bbb, 0 0 10px #bbb, 0 0 20px rgb(255, 162, 0), 0 0 40px rgb(255, 162, 0), 0 0 45px rgb(255, 162, 0), 0 0 50px rgb(255, 162, 0), 0 0 75px rgb(255, 162, 0), 0 0 100px rgb(255, 162, 0);
+    text-shadow: 0 0 7px #bbb, 0 0 5px #bbb, 0 0 10px #bbb, 0 0 20px #ffa200, 0 0 40px #ffa200, 0 0 45px #ffa200, 0 0 50px #ffa200, 0 0 75px #ffa200, 0 0 100px #ffa200;
   }
   0%, 12%, 46%, 76%, 96% {
     color: rgb(46, 46, 46);
@@ -342,7 +342,7 @@ input[type=radio] {
 @keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
     color: #fff;
-    text-shadow: 0 0 7px #bbb, 0 0 5px #bbb, 0 0 10px #bbb, 0 0 20px rgb(255, 162, 0), 0 0 40px rgb(255, 162, 0), 0 0 45px rgb(255, 162, 0), 0 0 50px rgb(255, 162, 0), 0 0 75px rgb(255, 162, 0), 0 0 100px rgb(255, 162, 0);
+    text-shadow: 0 0 7px #bbb, 0 0 5px #bbb, 0 0 10px #bbb, 0 0 20px #ffa200, 0 0 40px #ffa200, 0 0 45px #ffa200, 0 0 50px #ffa200, 0 0 75px #ffa200, 0 0 100px #ffa200;
   }
   0%, 12%, 46%, 76%, 96% {
     color: rgb(46, 46, 46);
@@ -474,31 +474,52 @@ footer {
   position: absolute;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center/cover;
+  -webkit-box-shadow: 10px 10px 10px black;
+          box-shadow: 10px 10px 10px black;
 }
 .drink .front {
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
-  text-align: right;
+  text-align: center;
+  width: 300px;
+  height: 450px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .drink .front__img {
-  width: 300px;
-  height: 400px;
+  width: 80%;
+  height: auto;
   -o-object-fit: fill;
      object-fit: fill;
+  margin: 20px auto;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 10px black;
+          box-shadow: 5px 5px 10px black;
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
 }
 .drink .front__name {
-  position: absolute;
   display: block;
-  background-color: rgb(235, 156, 20);
-  right: 0;
-  bottom: 0;
-  color: black;
+  font-family: "Mr Dafoe";
+  color: #FFC60D;
+  text-shadow: 3px 3px #588DC0, 5px 5px 5px black;
+  font-size: 2.5rem;
   padding: 3px 10px;
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
 }
 .drink .back {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  background: gray;
   padding: 0 1.5rem 1rem;
 }
 .drink .back__img {
@@ -508,6 +529,8 @@ footer {
   border-radius: 50%;
   -webkit-transform: rotate(20deg) translate(-17%, -50%);
           transform: rotate(20deg) translate(-17%, -50%);
+  -webkit-box-shadow: 5px 5px 10px black;
+          box-shadow: 5px 5px 10px black;
 }
 .drink .back__name {
   position: absolute;
@@ -546,19 +569,24 @@ footer {
 }
 .drink .back__heading {
   font-family: "Permanent Marker";
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin-bottom: 10px;
+  text-shadow: 5px 5px 5px black;
+}
+.drink .back__ingredients, .drink .back__instructions {
+  color: black;
+  background-color: #fff;
+  padding: 20px;
+  -webkit-box-shadow: 5px 5px 10px black;
+          box-shadow: 5px 5px 10px black;
 }
 .drink .back__ingredients {
   list-style-type: "– ";
-  margin-left: 30px;
+  padding-left: 30px;
   margin-bottom: 20px;
 }
-.drink .back__instructions {
-  margin-left: 10px;
-}
 .drink__button {
-  color: rgb(235, 156, 20);
+  color: #ffa200;
   font-size: 5rem;
   z-index: 11;
   -ms-flex-item-align: center;
@@ -654,4 +682,25 @@ label {
   text-align: right;
   color: rgba(255, 255, 255, 0.4);
   padding: 25px;
+}
+
+button {
+  text-transform: uppercase;
+  background: #588DC0;
+  color: #fff;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-color: #fff;
+  margin-top: 20px;
+  -webkit-box-shadow: 0px 5px 10px #FF8327;
+          box-shadow: 0px 5px 10px #FF8327;
+}
+button:hover, button:focus {
+  background-color: rgba(85, 25, 25, 0.3);
+}
+
+.button--clicked {
+  background-color: #551919;
+  -webkit-box-shadow: 0px 1px 2px #FF8327;
+          box-shadow: 0px 1px 2px #FF8327;
 }
