@@ -1,3 +1,9 @@
+.drinks__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .drink__container {
   width: 500px;
   height: 500px;
@@ -7,24 +13,24 @@
 .drink__list {
   position: relative;
   inset: 150px;
-  &--result {
-    text-align: right;
-    position: relative;
-  }
-  &--thumbnail {
-    min-width: 200px;
-    width: 100%;
-    height: 100%;
-  }
-  &--name {
-    position: absolute;
-    display: block;
-    background-color: rgb(235, 156, 20);
-    right: 0;
-    bottom: 0;
-    color: black;
-    padding: 3px 10px;
-  }
+  // &--result {
+  //   text-align: right;
+  //   position: relative;
+  // }
+  // &--thumbnail {
+  //   // min-width: 200px;
+  //   // width: 100%;
+  //   // height: 100%;
+  // }
+  // &--name {
+  //   position: absolute;
+  //   display: block;
+  //   background-color: rgb(235, 156, 20);
+  //   right: 0;
+  //   bottom: 0;
+  //   color: black;
+  //   padding: 3px 10px;
+  // }
 }
 
 .drink {
@@ -58,7 +64,20 @@
   }
   .front {
     transform: rotateY(0deg);
-    background: red;
+    text-align: right;
+    &__img {
+      width: 100%;
+      height: 100%;
+    }
+    &__name {
+      position: absolute;
+      display: block;
+      background-color: rgb(235, 156, 20);
+      right: 0;
+      bottom: 0;
+      color: black;
+      padding: 3px 10px;
+    }
   }
   .back {
     transform: rotateY(180deg);

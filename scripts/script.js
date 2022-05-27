@@ -68,9 +68,9 @@ cocktailApp.displayDrinks = function (data) {
     listElement.classList.add('drink');
     listElement.innerHTML = `
       <div class="drink__content">
-        <div class="front drink__list--result">
-          <img class="front__img drink__list--thumbnail" loading="lazy" />
-          <h3 class="front__name drink__list--name"></h3>
+        <div class="front">
+          <img class="front__img" loading="lazy" />
+          <h3 class="front__name"></h3>
         </div>
         <div class="back">
         </div>
