@@ -3,4 +3,22 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  fieldset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+input[type=radio] {
+  appearance: none;
+  &:checked + label{
+    animation: switcher 0.7s forwards;
+    color: white;
+  }
+}
+
+label {
+  color: rgba(255, 255, 255, $alpha: 0.4);
+  padding: 25px;
 }

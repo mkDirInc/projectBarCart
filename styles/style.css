@@ -329,6 +329,26 @@ input[type=radio] {
     text-shadow: none;
   }
 }
+@-webkit-keyframes switcher {
+  11%, 45%, 75%, 95%, 100% {
+    color: #fff;
+    text-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 21px #bbb, 0 0 42px rgb(235, 156, 20), 0 0 82px rgb(235, 156, 20), 0 0 92px rgb(235, 156, 20), 0 0 102px rgb(235, 156, 20), 0 0 151px rgb(235, 156, 20), 0 0 200px rgb(235, 156, 20);
+  }
+  0%, 12%, 46%, 76%, 96% {
+    color: rgb(46, 46, 46);
+    text-shadow: none;
+  }
+}
+@keyframes switcher {
+  11%, 45%, 75%, 95%, 100% {
+    color: #fff;
+    text-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 21px #bbb, 0 0 42px rgb(235, 156, 20), 0 0 82px rgb(235, 156, 20), 0 0 92px rgb(235, 156, 20), 0 0 102px rgb(235, 156, 20), 0 0 151px rgb(235, 156, 20), 0 0 200px rgb(235, 156, 20);
+  }
+  0%, 12%, 46%, 76%, 96% {
+    color: rgb(46, 46, 46);
+    text-shadow: none;
+  }
+}
 header {
   min-height: 50vh;
   display: -webkit-box;
@@ -380,6 +400,10 @@ footer {
   padding: 10px;
 }
 
+.drinks {
+  margin: 155px 0;
+}
+
 .drinks__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -394,7 +418,7 @@ footer {
 
 .drink__container {
   width: 100%;
-  height: 100vh;
+  height: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -459,6 +483,8 @@ footer {
 .drink .front__img {
   width: 300px;
   height: 400px;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 .drink .front__name {
   position: absolute;
@@ -531,16 +557,20 @@ footer {
 .drink .back__instructions {
   margin-left: 10px;
 }
+.drink__button {
+  color: rgb(235, 156, 20);
+  font-size: 5rem;
+  z-index: 11;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.drink__button--hidden {
+  opacity: 0;
+}
 
 .current__pic {
   opacity: 1;
   z-index: 10;
-}
-
-.button {
-  color: rgb(235, 156, 20);
-  font-size: 5rem;
-  z-index: 11;
 }
 
 form {
@@ -557,4 +587,31 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+form fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+input[type=radio] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+input[type=radio]:checked + label {
+  -webkit-animation: switcher 0.7s forwards;
+          animation: switcher 0.7s forwards;
+  color: white;
+}
+
+label {
+  color: rgba(255, 255, 255, 0.4);
+  padding: 25px;
 }

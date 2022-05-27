@@ -1,3 +1,6 @@
+.drinks {
+  margin: 155px 0;
+}
 .drinks__wrapper {
   display: flex;
   justify-content: center;
@@ -6,31 +9,13 @@
 
 .drink__container {
   width: 100%;
-  height: 100vh;
+  height: 500px;
   display: flex;
   justify-content: space-between;
 }
 
 .drink__list {
   position: relative;
-//   &--result {
-//     text-align: right;
-//     position: relative;
-//   }
-//   &--thumbnail {
-//     // min-width: 200px;
-//     // width: 100%;
-//     // height: 100%;
-//   }
-//   &--name {
-//     position: absolute;
-//     display: block;
-//     background-color: rgb(235, 156, 20);
-//     right: 0;
-//     bottom: 0;
-//     color: black;
-//     padding: 3px 10px;
-//   }
 }
 
 .drink {
@@ -73,6 +58,7 @@
     &__img {
       width: 300px;
       height: 400px;
+      object-fit: fill;
     }
 
     &__name {
@@ -149,6 +135,17 @@
       margin-left: 10px;
     }
   }
+  
+  &__button {
+    color: rgb(235, 156, 20);
+    font-size: 5rem;
+    z-index: 11;
+    align-self: center;
+    
+    &--hidden {
+      opacity: 0;
+    }
+  }
 }
 
 .current__pic {
@@ -156,19 +153,3 @@
   z-index: 10;
 }
 
-.button {
-  color: rgb(235, 156, 20);
-  font-size: 5rem;
-  // position: absolute;
-  z-index: 11;
-  // top: 50%;
-  // transform: translateY(-50%);
-}
-
-// .prevArrow {
-//   left: 1rem;
-// }
-
-// .nxtArrow {
-//   right: 1rem;
-// }

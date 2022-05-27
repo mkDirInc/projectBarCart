@@ -92,8 +92,10 @@ cocktailApp.displayDrinks = function (data) {
   // carousel function
   // giving the first child element (li) a class of "current__pic"
   cocktailApp.drinkList.children[0].classList.add('current__pic');
-  
+
   buttons.forEach(button => {
+    // adding function to show button on the page once results are found
+    button.classList.remove('drink__button--hidden');
     button.addEventListener('click', () => {
       // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;

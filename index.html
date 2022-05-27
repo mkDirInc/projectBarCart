@@ -26,10 +26,11 @@
     <form action="submit">
       <fieldset>
         <legend class="sr-only">Search by cocktail name or ingredient</legend>
-        <label for="name">Cocktail Name</label>
         <input type="radio" name="search-type" value="name" id="name" checked />
-        <label for="ingredient">Ingredient</label>
+        <label for="name">Cocktail Name</label>
+        <img src="./assets/icons8-cocktail-shaker-100.png" alt="icon of cocktail shaker" class="form__shaker">
         <input type="radio" name="search-type" value="ingredient" id="ingredient" />
+        <label for="ingredient">Ingredient</label>
       </fieldset>
       <label for="search-bar" class="sr-only">Search bar</label>
       <input type="text" name="search-bar" id="search-bar" required />
@@ -39,11 +40,11 @@
       <div class="wrapper drinks__wrapper">
         <!-- HTML Validator recommends adding a heading here. Something to consider. -->
         <div class="drink__container" data-carousel>
-          <i class="button prevArrow fa-solid fa-caret-left" data-button="prev"></i>
+          <i class="drink__button drink__button--hidden fa-solid fa-caret-left" data-button="prev"></i>
           <ul class="drink__list" data-slides>
             <!-- Drink results go here -->
           </ul>
-          <i class="button nxtArrow fa-solid fa-caret-right" data-button="next"></i>
+          <i class="drink__button drink__button--hidden fa-solid fa-caret-right" data-button="next"></i>
         </div>
       </div>
     </section>
