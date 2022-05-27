@@ -5,47 +5,49 @@
 }
 
 .drink__container {
-  width: 500px;
-  height: 500px;
-  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
 }
 
 .drink__list {
   position: relative;
-  inset: 150px;
-  // &--result {
-  //   text-align: right;
-  //   position: relative;
-  // }
-  // &--thumbnail {
-  //   // min-width: 200px;
-  //   // width: 100%;
-  //   // height: 100%;
-  // }
-  // &--name {
-  //   position: absolute;
-  //   display: block;
-  //   background-color: rgb(235, 156, 20);
-  //   right: 0;
-  //   bottom: 0;
-  //   color: black;
-  //   padding: 3px 10px;
-  // }
+  //   &--result {
+  //     text-align: right;
+  //     position: relative;
+  //   }
+  //   &--thumbnail {
+  //     // min-width: 200px;
+  //     // width: 100%;
+  //     // height: 100%;
+  //   }
+  //   &--name {
+  //     position: absolute;
+  //     display: block;
+  //     background-color: rgb(235, 156, 20);
+  //     right: 0;
+  //     bottom: 0;
+  //     color: black;
+  //     padding: 3px 10px;
+  //   }
 }
 
 .drink {
+  position: absolute;
   width: 300px;
   height: 400px;
   transform-style: preserve-3d;
   perspective: 1000px;
   border-radius: 15px;
-
   opacity: 0;
-  position: absolute;
-  inset: 0;
+  left: 50%;
+  transform: translate(-50%);
+
   &.flipped &__content {
     transform: rotateY(180deg);
   }
+
   &__content {
     width: 100%;
     height: 100%;
@@ -53,6 +55,7 @@
     transition: transform 1s;
     transform-style: preserve-3d;
   }
+
   .front,
   .back {
     border-radius: 15px;
@@ -62,13 +65,16 @@
     position: absolute;
     backface-visibility: hidden;
   }
+
   .front {
     transform: rotateY(0deg);
     text-align: right;
+
     &__img {
-      width: 100%;
-      height: 100%;
+      width: 300px;
+      height: 400px;
     }
+
     &__name {
       position: absolute;
       display: block;
@@ -79,10 +85,12 @@
       padding: 3px 10px;
     }
   }
+
   .back {
     transform: rotateY(180deg);
     background: gray;
     padding: 0 1.5rem 1rem;
+
     &__img {
       z-index: -1;
       width: 100%;
@@ -90,6 +98,7 @@
       border-radius: 50%;
       transform: rotate(20deg) translate(-17%, -50%);
     }
+
     &__name {
       position: absolute;
       width: fit-content;
@@ -102,33 +111,40 @@
       right: 0;
       margin-left: auto;
       margin-right: auto;
+
       &--xlong {
         font-size: 2.2rem;
         transform: rotate(-10deg) translateY(-60px);
       }
+
       &--long {
         font-size: 2.2rem;
         transform: rotate(-10deg) translateY(-50px);
       }
+
       &--medium {
         font-size: 3rem;
         transform: rotate(-10deg) translateY(-50px);
       }
+
       &--short {
         font-size: 3rem;
         transform: rotate(-10deg) translateY(-45px);
       }
     }
+
     &__heading {
       font-family: 'Permanent Marker';
       font-size: 1.8rem;
       margin-bottom: 10px
     }
+
     &__ingredients {
       list-style-type: '– ';
       margin-left: 30px;
       margin-bottom: 20px;
     }
+
     &__instructions {
       margin-left: 10px;
     }
@@ -137,22 +153,22 @@
 
 .current__pic {
   opacity: 1;
-  z-index: 999;
+  z-index: 10;
 }
 
 .button {
   color: rgb(235, 156, 20);
   font-size: 5rem;
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  transform: translateY(-50%);
+  // position: absolute;
+  z-index: 11;
+  // top: 50%;
+  // transform: translateY(-50%);
 }
 
-.prevArrow {
-  left: 1rem;
-}
+// .prevArrow {
+//   left: 1rem;
+// }
 
-.nxtArrow {
-  right: 1rem;
-}
+// .nxtArrow {
+//   right: 1rem;
+// }
