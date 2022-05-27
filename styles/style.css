@@ -393,17 +393,22 @@ footer {
 }
 
 .drink__container {
-  width: 500px;
-  height: 500px;
-  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .drink__list {
   position: relative;
-  inset: 150px;
 }
 
 .drink {
+  position: absolute;
   width: 300px;
   height: 400px;
   -webkit-transform-style: preserve-3d;
@@ -412,8 +417,9 @@ footer {
           perspective: 1000px;
   border-radius: 15px;
   opacity: 0;
-  position: absolute;
-  inset: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
 }
 .drink.flipped .drink__content {
   -webkit-transform: rotateY(180deg);
@@ -451,8 +457,8 @@ footer {
   text-align: right;
 }
 .drink .front__img {
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 400px;
 }
 .drink .front__name {
   position: absolute;
@@ -528,25 +534,13 @@ footer {
 
 .current__pic {
   opacity: 1;
-  z-index: 999;
+  z-index: 10;
 }
 
 .button {
   color: rgb(235, 156, 20);
   font-size: 5rem;
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-.prevArrow {
-  left: 1rem;
-}
-
-.nxtArrow {
-  right: 1rem;
+  z-index: 11;
 }
 
 form {
