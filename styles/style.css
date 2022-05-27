@@ -285,7 +285,9 @@ img {
      object-fit: cover;
 }
 
-ul, li, a {
+ul,
+li,
+a {
   margin: 0;
   padding: 0;
 }
@@ -379,25 +381,23 @@ footer {
 }
 
 .drink__container {
+  width: 500px;
   height: 500px;
   position: relative;
 }
 
 .drink__list {
   position: relative;
-  height: 100%;
+  inset: 150px;
 }
 .drink__list--result {
-  -ms-flex-item-align: center;
-      align-self: center;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 calc(50% - 50px);
-          flex: 0 1 calc(50% - 50px);
   text-align: right;
   position: relative;
 }
 .drink__list--thumbnail {
   min-width: 200px;
+  width: 100%;
+  height: 100%;
 }
 .drink__list--name {
   position: absolute;
@@ -417,6 +417,9 @@ footer {
   -webkit-perspective: 1000px;
           perspective: 1000px;
   border-radius: 15px;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
 }
 .drink.flipped .drink__content {
   -webkit-transform: rotateY(180deg);
@@ -432,8 +435,6 @@ footer {
   transition: transform 1s, -webkit-transform 1s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  left: 400px;
-  top: 200px;
 }
 .drink .front,
 .drink .back {
@@ -518,24 +519,25 @@ footer {
   margin-left: 10px;
 }
 
-.prevArrow,
-.nxtArrow {
+.current__pic {
+  opacity: 1;
+  z-index: 999;
+}
+
+.button {
   color: rgb(235, 156, 20);
   font-size: 5rem;
   position: absolute;
+  z-index: 2;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
 
 .prevArrow {
-  left: 20%;
-  -webkit-transform: translateX(-20%);
-          transform: translateX(-20%);
+  left: 1rem;
 }
 
 .nxtArrow {
-  right: 20%;
-  -webkit-transform: translateX(20%);
-          transform: translateX(20%);
+  right: 1rem;
 }

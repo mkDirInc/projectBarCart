@@ -1,23 +1,21 @@
-.drink__list {
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // align-items: center;
-  // gap: 50px;
+.drink__container {
   width: 500px;
   height: 500px;
   position: relative;
-  
+}
+
+.drink__list {
+  position: relative;
+  inset: 150px;
   &--result {
-    flex: 0 1 calc(100%/5 - 50px);
     text-align: right;
     position: relative;
   }
-
   &--thumbnail {
     min-width: 200px;
+    width: 100%;
+    height: 100%;
   }
-
   &--name {
     position: absolute;
     display: block;
@@ -28,12 +26,7 @@
     padding: 3px 10px;
   }
 }
-// .current__pic {
-//   opacity: 1;
-// }
-li {
-  opacity: 0;
-}
+
 .drink {
   width: 300px;
   height: 400px;
@@ -41,10 +34,12 @@ li {
   perspective: 1000px;
   border-radius: 15px;
 
+  opacity: 0;
+  position: absolute;
+  inset: 0;
   &.flipped &__content {
     transform: rotateY(180deg);
   }
-
   &__content {
     width: 100%;
     height: 100%;
@@ -52,7 +47,6 @@ li {
     transition: transform 1s;
     transform-style: preserve-3d;
   }
-
   .front,
   .back {
     border-radius: 15px;
@@ -62,12 +56,10 @@ li {
     position: absolute;
     backface-visibility: hidden;
   }
-
   .front {
     transform: rotateY(0deg);
     background: red;
   }
-
   .back {
     transform: rotateY(180deg);
     background: gray;
@@ -79,7 +71,6 @@ li {
       border-radius: 50%;
       transform: rotate(20deg) translate(-17%, -50%);
     }
-
     &__name {
       position: absolute;
       width: fit-content;
@@ -109,22 +100,40 @@ li {
         transform: rotate(-10deg) translateY(-45px);
       }
     }
-
     &__heading {
       font-family: 'Permanent Marker';
       font-size: 1.8rem;
       margin-bottom: 10px
     }
-
     &__ingredients {
       list-style-type: '– ';
       margin-left: 30px;
       margin-bottom: 20px;
     }
-
     &__instructions {
       margin-left: 10px;
     }
   }
+}
 
+.current__pic {
+  opacity: 1;
+  z-index: 999;
+}
+
+.button {
+  color: rgb(235, 156, 20);
+  font-size: 5rem;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prevArrow {
+  left: 1rem;
+}
+
+.nxtArrow {
+  right: 1rem;
 }

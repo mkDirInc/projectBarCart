@@ -8,8 +8,8 @@ cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkList = document.querySelector('.drink__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 
-// carouel button
-const buttons = document.querySelectorAll('.button');
+// calling all button elements
+const buttons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
   cocktailApp.getIngredientName();
@@ -89,39 +89,28 @@ cocktailApp.displayDrinks = function (data) {
     cocktailApp.drinkList.append(listElement);
   });
 
-  // carousel fxn
+  // carousel function
+  // giving the first child element (li) a class of "current__pic"
+  cocktailApp.drinkList.children[0].classList.add('current__pic');
+  
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      // wanted to use another class name, but couldn't make it work
+      console.log(this.drinkList);
+      // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;
-      const imgList = Array.from(cocktailApp.drinkList.children);
-      console.log(imgList[0]);
-      // imgList[0].classList.add('current__pic');
-      // imgList[0].setAttribute('data-active', 'true');
-      
-      const currentPic = cocktailApp.drinkList.querySelector('.current__pic');
-      
-      // const currentPic = cocktailApp.drinkList.querySelector('[data-active]');
-      console.log(currentPic);
-      
-      let newIndex = imgList.indexOf(currentPic) + offset;
-      console.log(newIndex);
-
+      // declaring currentPic of li which has 'date-active' attribute
+      const currentPic = this.drinkList.querySelector('.current__pic');
+      const picList = Array.from(this.drinkList.children);
+      // by setting a new index number, we are removing and assigning the attribute 'data-active' to the nxt/prev li element and then loop the list within
+      let newIndex = picList.indexOf(currentPic) + offset;
       if (newIndex < 0) {
-        newIndex = imgList.length - 1;
+        newIndex = picList.length - 1;
       }
-      if (newIndex >= imgList.length) {
+      if (newIndex >= picList.length) {
         newIndex = 0;
       }
-      console.log(imgList[0]);
-      console.log(imgList[1]);
-      console.log(imgList[2]);
-      imgList[newIndex].classList.add('current__pic');
-      imgList[newIndex].style.opacity = '1';
+      picList[newIndex].classList.add('current__pic');
       currentPic.classList.remove('current__pic');
-      currentPic.style.opacity = '0';
-      // currentPic.removeAttribute('data-active');
-      // imgList[newIndex].setAttribute('data-active', 'true');
     })
   })
 };
