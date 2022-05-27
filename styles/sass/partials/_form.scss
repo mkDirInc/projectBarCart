@@ -5,9 +5,20 @@ form {
   align-items: center;
   fieldset {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
+  img {
+    min-width: 10%;
+    width: 10%;
+    transform: rotate(30deg);
+    transition: transform .5s cubic-bezier(.43,-0.41,.63,1.4);
+  }
+}
+
+
+input[value=name]:checked ~ img {
+  transform: rotate(-30deg);
 }
 
 input[type=radio] {
@@ -18,7 +29,30 @@ input[type=radio] {
   }
 }
 
+input[type=text] {
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  transition: box-shadow .3s ease-out;
+  transform: translateY(-20px);
+  font-family: 'Permanent Marker';
+  font-size: 1.3rem;
+  background-color: rgba($color: $white, $alpha: 0.7);
+  outline: none;
+  border: none;
+  &:hover, &:focus {
+    background-color: rgba($color: $white, $alpha: 1);
+    caret-color: $neonGreen;
+    box-shadow: 0 0 7px #bbb,
+    0 0 10px #bbb,
+    0 0 32px $neonGreen,
+    0 0 62px $neonGreen
+  }
+}
+
 label {
+  text-align: right;
   color: rgba(255, 255, 255, $alpha: 0.4);
   padding: 25px;
 }
