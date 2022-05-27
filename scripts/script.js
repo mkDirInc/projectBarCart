@@ -95,7 +95,6 @@ cocktailApp.displayDrinks = function (data) {
   
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      console.log(this.drinkList);
       // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;
       // declaring currentPic of li which has 'date-active' attribute
