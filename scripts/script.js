@@ -90,10 +90,8 @@ cocktailApp.displayDrinks = function (data) {
   });
 
   // carousel function
-  // giving the first child element (li) an attribute of "data-active" OR class of "current__pic"
-  // cocktailApp.drinkList.children[0].setAttribute('data-active', '');
+  // giving the first child element (li) a class of "current__pic"
   cocktailApp.drinkList.children[0].classList.add('current__pic');
-  // console.log(cocktailApp.drinkList.children[0]);
   
   buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -103,7 +101,6 @@ cocktailApp.displayDrinks = function (data) {
       // declaring currentPic of li which has 'date-active' attribute
       const currentPic = this.drinkList.querySelector('.current__pic');
       const picList = Array.from(this.drinkList.children);
-      // console.log(picList);
       // by setting a new index number, we are removing and assigning the attribute 'data-active' to the nxt/prev li element and then loop the list within
       let newIndex = picList.indexOf(currentPic) + offset;
       if (newIndex < 0) {
@@ -112,16 +109,10 @@ cocktailApp.displayDrinks = function (data) {
       if (newIndex >= picList.length) {
         newIndex = 0;
       }
-
-      // picList[newIndex].dataset.active = true;
-      // currentPic.removeAttribute("data-active");
       picList[newIndex].classList.add('current__pic');
       currentPic.classList.remove('current__pic');
-
     })
   })
-
-
 };
 
 // This callback function supplied to card event listeners.
