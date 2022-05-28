@@ -94,19 +94,20 @@ cocktailApp.displayDrinks = function (data) {
   });
 
   // carousel function
-  // giving the first child element (li) a class of "drink__pic-current"
-  cocktailApp.drinkList.children[0].classList.add('drink__pic-current');
+  // giving the first child element (li) a class of "drink__pic--current"
+  cocktailApp.drinkList.children[0].classList.add('drink__pic--current');
 
   buttons.forEach(button => {
     // adding function to show button on the page once results are found
     button.classList.remove('drink__button--hidden');
     button.addEventListener('click', () => {
+      // button.classList.add('.drink__button--clicked');
       // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;
       // declaring currentPic of li which has 'date-active' attribute
-      const currentPic = this.drinkList.querySelector('.drink__pic-current');
+      const currentPic = this.drinkList.querySelector('.drink__pic--current');
       const picList = Array.from(this.drinkList.children);
-      // by setting a new index number, we remove and re-assign the drink__pic-current class to the nxt/prev li element and then loop the list within
+      // by setting a new index number, we remove and re-assign the drink__pic--current class to the nxt/prev li element and then loop the list within
       let newIndex = picList.indexOf(currentPic) + offset;
       if (newIndex < 0) {
         newIndex = picList.length - 1;
@@ -114,9 +115,9 @@ cocktailApp.displayDrinks = function (data) {
       if (newIndex >= picList.length) {
         newIndex = 0;
       }
-      picList[newIndex].classList.add('drink__pic-current');
+      picList[newIndex].classList.add('drink__pic--current');
       cocktailApp.changeDrinkSectionHeight(picList[newIndex]);
-      currentPic.classList.remove('drink__pic-current');
+      currentPic.classList.remove('drink__pic--current');
     })
   })
 };
