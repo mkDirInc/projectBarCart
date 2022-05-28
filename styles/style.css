@@ -623,7 +623,7 @@ footer {
   opacity: 0;
 }
 
-.current__pic {
+.drink__pic-current {
   opacity: 1;
   z-index: 10;
 }
