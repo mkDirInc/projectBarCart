@@ -14,7 +14,7 @@ cocktailApp.submitButton = cocktailApp.form.querySelector('button');
 const buttons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
-  cocktailApp.getIngredientName();
+  cocktailApp.prepareSubmitListener();
 };
 
 // Compiles and returns fetch URL based on user's search parameters.
@@ -29,7 +29,7 @@ cocktailApp.getFetchURL = function () {
 
 // This adds an event listener to form submission:
 // On submit: fetch searched data from API and passes it on to be displayed.
-cocktailApp.getIngredientName = function () {
+cocktailApp.prepareSubmitListener = function () {
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -41,7 +41,7 @@ cocktailApp.getIngredientName = function () {
           return res.json();
         } else {
           throw new Error(
-            `This seems like invalid ingredient. Please try another one`
+            `We couldn't find anything that matched your search term. How about a random cocktail?`
           );
         }
       })
@@ -49,13 +49,31 @@ cocktailApp.getIngredientName = function () {
         cocktailApp.displayDrinks(drinkData);
       })
       .catch((err) => {
-        // If we have time, we can make an img display
-        console.log(`This seems like invalid ingredient. Please try another one`), err;
+        cocktailApp.getRandomCocktail();
       });
   });
 };
 
-// For each drink in the provided data, this appends a card to .drink__list.
+cocktailApp.getRandomCocktail = function() {
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error(
+          `No response from Cocktail API.`
+        );
+      }
+    })
+    .then((drinkData) => {
+      cocktailApp.displayDrinks(drinkData);
+    })
+    .catch((err) => {
+      console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
+    });
+}
+
+// For each drink in the provided data, this appends a card to <ul class="drink__list".>
 // Each card is given a click event listener so that it can be flipped to its instructions side
 cocktailApp.displayDrinks = function (data) {
 
@@ -161,7 +179,7 @@ cocktailApp.confirmDrinkData = function (drinkId, cardBack) {
       if (res.ok) {
         return res.json()
       } else {
-        throw new Error(`Our drink monkeys couldn't find anything. Sorry. :(`);
+        throw new Error(`Nothing found with that search term.`);
       }
     })
     .then((drinkData) => {
