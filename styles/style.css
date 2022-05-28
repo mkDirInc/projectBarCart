@@ -329,7 +329,7 @@ input[type=radio] {
 @-webkit-keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
     color: #fff;
-    text-shadow: 0 0 7px #bbb, 0 0 5px #bbb, 0 0 10px #bbb, 0 0 20px #ffa200, 0 0 40px #ffa200, 0 0 45px #ffa200, 0 0 50px #ffa200, 0 0 75px #ffa200, 0 0 100px #ffa200;
+    text-shadow: 0 0 7px #bbb, 0 0 2px #bbb, 0 0 5px #bbb, 0 0 10px #ff950a, 0 0 15px #ff950a, 0 0 20px #ff950a, 0 0 25px #ff950a, 0 0 40px #ff950a, 0 0 50px #ff950a;
   }
   0%, 12%, 46%, 76%, 96% {
     color: rgb(46, 46, 46);
@@ -339,7 +339,7 @@ input[type=radio] {
 @keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
     color: #fff;
-    text-shadow: 0 0 7px #bbb, 0 0 5px #bbb, 0 0 10px #bbb, 0 0 20px #ffa200, 0 0 40px #ffa200, 0 0 45px #ffa200, 0 0 50px #ffa200, 0 0 75px #ffa200, 0 0 100px #ffa200;
+    text-shadow: 0 0 7px #bbb, 0 0 2px #bbb, 0 0 5px #bbb, 0 0 10px #ff950a, 0 0 15px #ff950a, 0 0 20px #ff950a, 0 0 25px #ff950a, 0 0 40px #ff950a, 0 0 50px #ff950a;
   }
   0%, 12%, 46%, 76%, 96% {
     color: rgb(46, 46, 46);
@@ -613,7 +613,7 @@ footer {
   margin-bottom: 20px;
 }
 .drink__button {
-  color: #ffa200;
+  color: #ff950a;
   font-size: 5rem;
   z-index: 11;
   -ms-flex-item-align: center;
@@ -676,6 +676,12 @@ input[type=radio] {
      -moz-appearance: none;
           appearance: none;
 }
+input[type=radio]:focus {
+  outline: none;
+}
+input[type=radio]:focus + label {
+  outline: 1px solid #FF8327;
+}
 input[type=radio]:checked + label {
   -webkit-animation: switcher 0.7s forwards;
           animation: switcher 0.7s forwards;
@@ -693,8 +699,7 @@ input[type=text] {
   transition: background-color 0.5s ease-out, box-shadow 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
   -webkit-transform: translateY(-20px);
           transform: translateY(-20px);
-  font-family: "Permanent Marker";
-  font-size: 1.3rem;
+  font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.7);
   outline: none;
   border: none;
@@ -702,8 +707,8 @@ input[type=text] {
 input[type=text]:hover, input[type=text]:focus {
   background-color: rgba(255, 255, 255, 0.9);
   caret-color: #33ff00;
-  -webkit-box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 32px #33ff00, 0 0 62px #33ff00;
-          box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 32px #33ff00, 0 0 62px #33ff00;
+  -webkit-box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 20px #33ff00, 0 0 40px #33ff00;
+          box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 20px #33ff00, 0 0 40px #33ff00;
 }
 
 label {

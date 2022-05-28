@@ -23,6 +23,12 @@ input[value=name]:checked ~ img {
 
 input[type=radio] {
   appearance: none;
+  &:focus {
+    outline: none;
+    + label {
+      outline: 1px solid $dustyOrange;
+    }
+  }
   &:checked + label{
     animation: switcher 0.7s forwards;
     color: white;
@@ -36,8 +42,8 @@ input[type=text] {
   border-radius: 10px;
   transition: background-color .5s ease-out, box-shadow .5s ease-out;
   transform: translateY(-20px);
-  font-family: 'Permanent Marker';
-  font-size: 1.3rem;
+  // font-family: 'Permanent Marker';
+  font-size: 1rem;
   background-color: rgba($color: $white, $alpha: 0.7);
   outline: none;
   border: none;
@@ -46,8 +52,8 @@ input[type=text] {
     caret-color: $neonGreen;
     box-shadow: 0 0 7px #bbb,
     0 0 10px #bbb,
-    0 0 32px $neonGreen,
-    0 0 62px $neonGreen
+    0 0 20px $neonGreen,
+    0 0 40px $neonGreen
   }
 }
 
