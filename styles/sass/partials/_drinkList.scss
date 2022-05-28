@@ -1,5 +1,6 @@
 .drinks {
-  margin: 155px 0;
+  margin: 165px 0;
+  transition: height 1s ease-out;
 }
 .drinks__wrapper {
   display: flex;
@@ -9,7 +10,7 @@
 
 .drink__container {
   width: 100%;
-  height: 500px;
+  height: 400px;
   display: flex;
   justify-content: space-between;
 }
@@ -22,12 +23,13 @@
   position: absolute;
   width: 300px;
   height: 400px;
-  transform-style: preserve-3d;
+  // transform-style: preserve-3d;
   perspective: 1000px;
   border-radius: 15px;
   opacity: 0;
   left: 50%;
   transform: translate(-50%);
+  cursor: pointer;
 
   &.flipped &__content {
     transform: rotateY(180deg);
@@ -67,10 +69,10 @@
       object-fit: fill;
       margin: 20px auto;
       border-radius: 15px;
-      box-shadow: 5px 5px 10px black;
-      transform: rotate(5deg);
+      box-shadow: 5px 5px 10px black,
+                  -1px -1px 10px black;
+      transform: rotate(5deg) translateZ(50px);
     }
-
     &__name {
       display: block;
       font-family: 'Mr Dafoe';
@@ -78,20 +80,37 @@
       text-shadow: 3px 3px $teal, 5px 5px 5px black;
       font-size: 2.5rem;
       padding: 3px 10px;
-      transform: rotate(-5deg);
+      transform: rotate(-5deg) translateZ(50px);
     }
   }
 
   .back {
     transform: rotateY(180deg);
-    padding: 0 1.5rem 1rem;
-
+    padding: 0 1.5rem 2rem;
+    &__title {
+      opacity: 0;
+      transform: translateY(100px) translateZ(50px);
+      transition: opacity .5s ease-out, transform .5s ease-out;
+      &--flipped {
+        opacity: 1;
+        transform: translateY(0px) translateZ(50px);
+      }
+    }
+    &__recipe {
+      opacity: 0;
+      transform: translateY(-100px) translateZ(50px);
+      transition: opacity .5s ease-out, transform .5s ease-out;
+      &--flipped {
+        opacity: 1;
+        transform: translateY(0px) translateZ(50px);
+      }
+    }
     &__img {
       z-index: -1;
       width: 100%;
       margin: 0 auto -40% auto;
       border-radius: 50%;
-      transform: rotate(20deg) translate(-17%, -50%);
+      transform: rotate(20deg) translate(-17%, -40%);
       box-shadow: 5px 5px 10px black;
     }
 
@@ -100,35 +119,35 @@
       width: fit-content;
       font-family: 'Mr Dafoe';
       color: $summerYellow;
-      text-shadow: 3px 3px $teal;
+      text-shadow: 3px 3px $teal,
+                  5px 5px 5px black;
       text-align: center;
       top: 0;
       left: 0;
       right: 0;
       margin-left: auto;
       margin-right: auto;
-
       &--xlong {
         font-size: 2.2rem;
         transform: rotate(-10deg) translateY(-60px);
       }
-
+      
       &--long {
         font-size: 2.2rem;
         transform: rotate(-10deg) translateY(-50px);
       }
-
+      
       &--medium {
         font-size: 3rem;
         transform: rotate(-10deg) translateY(-50px);
       }
-
+      
       &--short {
         font-size: 3rem;
         transform: rotate(-10deg) translateY(-45px);
       }
     }
-
+    
     &__heading {
       font-family: 'Permanent Marker';
       font-size: 1.4rem;
@@ -141,6 +160,7 @@
       background-color: $white;
       padding: 20px;
       box-shadow: 5px 5px 10px black;
+      border-radius: 5px;
     }
 
     &__ingredients {
@@ -155,6 +175,7 @@
     font-size: 5rem;
     z-index: 11;
     align-self: center;
+    cursor: pointer;
     
     &--hidden {
       opacity: 0;

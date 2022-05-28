@@ -5,6 +5,7 @@ cocktailApp.searchTypes.name = '/api/json/v1/1/search.php?s=';
 cocktailApp.searchTypes.ingredient = '/api/json/v1/1/filter.php?i=';
 cocktailApp.endpoint = 'https://www.thecocktaildb.com';
 cocktailApp.form = document.querySelector('form');
+cocktailApp.drinkSection = document.querySelector('.drinks')
 cocktailApp.drinkList = document.querySelector('.drink__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
@@ -49,7 +50,7 @@ cocktailApp.getIngredientName = function () {
       })
       .catch((err) => {
         // If we have time, we can make an img display
-        alert(`This seems like invalid ingredient. Please try another one`);
+        console.log(`This seems like invalid ingredient. Please try another one`), err;
       });
   });
 };
@@ -105,7 +106,7 @@ cocktailApp.displayDrinks = function (data) {
       // declaring currentPic of li which has 'date-active' attribute
       const currentPic = this.drinkList.querySelector('.current__pic');
       const picList = Array.from(this.drinkList.children);
-      // by setting a new index number, we are removing and assigning the attribute 'data-active' to the nxt/prev li element and then loop the list within
+      // by setting a new index number, we remove and re-assign the current__pic class to the nxt/prev li element and then loop the list within
       let newIndex = picList.indexOf(currentPic) + offset;
       if (newIndex < 0) {
         newIndex = picList.length - 1;
@@ -114,6 +115,7 @@ cocktailApp.displayDrinks = function (data) {
         newIndex = 0;
       }
       picList[newIndex].classList.add('current__pic');
+      cocktailApp.changeDrinkSectionHeight(picList[newIndex]);
       currentPic.classList.remove('current__pic');
     })
   })
@@ -125,9 +127,22 @@ cocktailApp.handleCardClick = function () {
   // If the cardback has no content, send it through control flow that confirms the data, then displays it.
   if (cardBack.childElementCount === 0) {
     cocktailApp.confirmDrinkData(this.id, cardBack);
+  } else {
+  // Otherwise, change element classes to animate flip.
+  cocktailApp.changeFlipClasses(this);
   }
-  this.classList.toggle('flipped');
 };
+
+cocktailApp.changeFlipClasses = function(drinkElement) {
+  drinkElement.classList.toggle('flipped');
+  console.log(drinkElement);
+  const cardBack = drinkElement.querySelector('.back');
+  setTimeout(function() {
+    cardBack.querySelector('.back__recipe').classList.toggle('back__recipe--flipped');
+    cardBack.querySelector('.back__title').classList.toggle('back__title--flipped');
+  }, 1);
+  cocktailApp.changeDrinkSectionHeight(drinkElement);
+}
 
 // This confirms that the cached drinked data is complete before passing it along fillCardBack().
 cocktailApp.confirmDrinkData = function (drinkId, cardBack) {
@@ -153,13 +168,12 @@ cocktailApp.confirmDrinkData = function (drinkId, cardBack) {
       this.fillCardBack(cardBack, this.drinks[index]);
     })
     .catch((err) => {
-      alert(`Our drink monkeys couldn't find anything. Sorry. :(`);
+      console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
     });
 };
 
 // Fills the innerHTML of a clicked card's cardback
 cocktailApp.fillCardBack = function (cardBack, thisDrink) {
-
   // Fill the cardBack's HTML
   cardBack.innerHTML = `
     <div class="back__title">
@@ -202,6 +216,20 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
     
     backIngredients.append(ingredientListElement);
   }
+  // Traverse the DOM to the card's list element and apply the classes needed to flip the card for the first time.
+  const listElement = cardBack.parentElement.parentElement;
+  this.changeFlipClasses(listElement);  
+}
+
+// Changes the height of the drink section based on the size of the card being flipped to.
+cocktailApp.changeDrinkSectionHeight = function(element) {
+  let frontFacingCard;
+  if (element.classList.contains('flipped')) {
+    frontFacingCard = element.querySelector('.back'); 
+  } else {
+    frontFacingCard = element.querySelector('.front');
+  }
+  this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.2}px`;
 }
 
 cocktailApp.getCardBackFontClass = function(strDrink) {

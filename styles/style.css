@@ -251,11 +251,10 @@ h1 {
 body {
   position: relative;
   min-height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(80%, rgb(40, 40, 40)), color-stop(80%, rgb(35, 35, 35))), url();
-  background-image: linear-gradient(90deg, rgb(40, 40, 40) 80%, rgb(35, 35, 35) 80%), url();
 }
 body::before {
   z-index: -1;
@@ -264,11 +263,9 @@ body::before {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: url("../assets/manoj-kumar-bricks.jpg") no-repeat center/cover;
-  background: url("../assets/jakob-braun-bricks.jpg") no-repeat center/cover;
-  background: url("../assets/namroud-gorguis-bricks.jpg") no-repeat center/cover;
-  -webkit-filter: grayscale(60%) brightness(25%);
-          filter: grayscale(60%) brightness(25%);
+  background: url("../assets/namroud-gorguis-bricks.jpg") no-repeat center/cover fixed;
+  -webkit-filter: grayscale(60%) brightness(20%);
+          filter: grayscale(60%) brightness(20%);
 }
 
 .wrapper {
@@ -350,7 +347,7 @@ input[type=radio] {
   }
 }
 header {
-  min-height: 50vh;
+  min-height: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,7 +383,7 @@ header {
 }
 
 footer {
-  padding: 10px;
+  padding: 20px;
 }
 
 .footer__text {
@@ -401,7 +398,9 @@ footer {
 }
 
 .drinks {
-  margin: 155px 0;
+  margin: 165px 0;
+  -webkit-transition: height 1s ease-out;
+  transition: height 1s ease-out;
 }
 
 .drinks__wrapper {
@@ -418,7 +417,7 @@ footer {
 
 .drink__container {
   width: 100%;
-  height: 500px;
+  height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -435,8 +434,6 @@ footer {
   position: absolute;
   width: 300px;
   height: 400px;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
   -webkit-perspective: 1000px;
           perspective: 1000px;
   border-radius: 15px;
@@ -444,6 +441,7 @@ footer {
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
+  cursor: pointer;
 }
 .drink.flipped .drink__content {
   -webkit-transform: rotateY(180deg);
@@ -502,10 +500,10 @@ footer {
      object-fit: fill;
   margin: 20px auto;
   border-radius: 15px;
-  -webkit-box-shadow: 5px 5px 10px black;
-          box-shadow: 5px 5px 10px black;
-  -webkit-transform: rotate(5deg);
-          transform: rotate(5deg);
+  -webkit-box-shadow: 5px 5px 10px black, -1px -1px 10px black;
+          box-shadow: 5px 5px 10px black, -1px -1px 10px black;
+  -webkit-transform: rotate(5deg) translateZ(50px);
+          transform: rotate(5deg) translateZ(50px);
 }
 .drink .front__name {
   display: block;
@@ -514,21 +512,49 @@ footer {
   text-shadow: 3px 3px #588DC0, 5px 5px 5px black;
   font-size: 2.5rem;
   padding: 3px 10px;
-  -webkit-transform: rotate(-5deg);
-          transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg) translateZ(50px);
+          transform: rotate(-5deg) translateZ(50px);
 }
 .drink .back {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  padding: 0 1.5rem 1rem;
+  padding: 0 1.5rem 2rem;
+}
+.drink .back__title {
+  opacity: 0;
+  -webkit-transform: translateY(100px) translateZ(50px);
+          transform: translateY(100px) translateZ(50px);
+  -webkit-transition: opacity 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+.drink .back__title--flipped {
+  opacity: 1;
+  -webkit-transform: translateY(0px) translateZ(50px);
+          transform: translateY(0px) translateZ(50px);
+}
+.drink .back__recipe {
+  opacity: 0;
+  -webkit-transform: translateY(-100px) translateZ(50px);
+          transform: translateY(-100px) translateZ(50px);
+  -webkit-transition: opacity 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+.drink .back__recipe--flipped {
+  opacity: 1;
+  -webkit-transform: translateY(0px) translateZ(50px);
+          transform: translateY(0px) translateZ(50px);
 }
 .drink .back__img {
   z-index: -1;
   width: 100%;
   margin: 0 auto -40% auto;
   border-radius: 50%;
-  -webkit-transform: rotate(20deg) translate(-17%, -50%);
-          transform: rotate(20deg) translate(-17%, -50%);
+  -webkit-transform: rotate(20deg) translate(-17%, -40%);
+          transform: rotate(20deg) translate(-17%, -40%);
   -webkit-box-shadow: 5px 5px 10px black;
           box-shadow: 5px 5px 10px black;
 }
@@ -539,7 +565,7 @@ footer {
   width: fit-content;
   font-family: "Mr Dafoe";
   color: #FFC60D;
-  text-shadow: 3px 3px #588DC0;
+  text-shadow: 3px 3px #588DC0, 5px 5px 5px black;
   text-align: center;
   top: 0;
   left: 0;
@@ -579,6 +605,7 @@ footer {
   padding: 20px;
   -webkit-box-shadow: 5px 5px 10px black;
           box-shadow: 5px 5px 10px black;
+  border-radius: 5px;
 }
 .drink .back__ingredients {
   list-style-type: "– ";
@@ -591,6 +618,7 @@ footer {
   z-index: 11;
   -ms-flex-item-align: center;
       align-self: center;
+  cursor: pointer;
 }
 .drink__button--hidden {
   opacity: 0;
@@ -659,10 +687,10 @@ input[type=text] {
   padding: 10px;
   text-align: center;
   border-radius: 10px;
-  -webkit-transition: -webkit-box-shadow 0.3s ease-out;
-  transition: -webkit-box-shadow 0.3s ease-out;
-  transition: box-shadow 0.3s ease-out;
-  transition: box-shadow 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+  -webkit-transition: background-color 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
+  transition: background-color 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
+  transition: background-color 0.5s ease-out, box-shadow 0.5s ease-out;
+  transition: background-color 0.5s ease-out, box-shadow 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
   -webkit-transform: translateY(-20px);
           transform: translateY(-20px);
   font-family: "Permanent Marker";
@@ -672,7 +700,7 @@ input[type=text] {
   border: none;
 }
 input[type=text]:hover, input[type=text]:focus {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   caret-color: #33ff00;
   -webkit-box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 32px #33ff00, 0 0 62px #33ff00;
           box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 32px #33ff00, 0 0 62px #33ff00;

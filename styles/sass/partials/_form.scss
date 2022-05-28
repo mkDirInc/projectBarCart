@@ -34,7 +34,7 @@ input[type=text] {
   padding: 10px;
   text-align: center;
   border-radius: 10px;
-  transition: box-shadow .3s ease-out;
+  transition: background-color .5s ease-out, box-shadow .5s ease-out;
   transform: translateY(-20px);
   font-family: 'Permanent Marker';
   font-size: 1.3rem;
@@ -42,7 +42,7 @@ input[type=text] {
   outline: none;
   border: none;
   &:hover, &:focus {
-    background-color: rgba($color: $white, $alpha: 1);
+    background-color: rgba($color: $white, $alpha: .9);
     caret-color: $neonGreen;
     box-shadow: 0 0 7px #bbb,
     0 0 10px #bbb,
