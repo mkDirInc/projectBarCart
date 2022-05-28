@@ -229,7 +229,7 @@ html {
 
 html {
   font-size: 125%;
-  color: #fff;
+  color: #eee;
   text-rendering: optimizeLegibility;
 }
 
@@ -473,8 +473,8 @@ footer {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center/cover;
-  -webkit-box-shadow: 10px 10px 10px black;
-          box-shadow: 10px 10px 10px black;
+  -webkit-box-shadow: 5px 10px 10px black, inset 2px 3px 5px white, inset -2px -3px 5px black;
+          box-shadow: 5px 10px 10px black, inset 2px 3px 5px white, inset -2px -3px 5px black;
 }
 .drink .front {
   -webkit-transform: rotateY(0deg);
@@ -509,7 +509,7 @@ footer {
   display: block;
   font-family: "Mr Dafoe";
   color: #FFC60D;
-  text-shadow: 3px 3px #588DC0, 5px 5px 5px black;
+  text-shadow: 3px 3px #588DC0, 5px 5px 3px black;
   font-size: 2.5rem;
   padding: 3px 10px;
   -webkit-transform: rotate(-5deg) translateZ(50px);
@@ -549,7 +549,6 @@ footer {
           transform: translateY(0px) translateZ(50px);
 }
 .drink .back__img {
-  z-index: -1;
   width: 100%;
   margin: 0 auto -40% auto;
   border-radius: 50%;
@@ -597,11 +596,11 @@ footer {
   font-family: "Permanent Marker";
   font-size: 1.4rem;
   margin-bottom: 10px;
-  text-shadow: 5px 5px 5px black;
+  text-shadow: 1px 1px black, -1px 1px black, 3px 3px 3px black;
 }
 .drink .back__ingredients, .drink .back__instructions {
   color: black;
-  background-color: #fff;
+  background-color: #eee;
   padding: 20px;
   -webkit-box-shadow: 5px 5px 10px black;
           box-shadow: 5px 5px 10px black;
