@@ -85,6 +85,7 @@ cocktailApp.displayDrinks = function (data) {
     // Create list element and its HTML
     const listElement = document.createElement('li');
     listElement.id = drink.idDrink;
+    listElement.setAttribute('tabindex', '0');
     listElement.classList.add('drink');
     listElement.innerHTML = `
       <div class="drink__content">
@@ -106,6 +107,24 @@ cocktailApp.displayDrinks = function (data) {
 
     // Add an event listener and append to the page
     listElement.addEventListener('click', cocktailApp.handleCardClick);
+    listElement.addEventListener('keyup',function(e) {
+      console.log(e.key);
+      if (e.key === 'Enter' || e.key === ' ') {
+        const cardBack = this.querySelector('.back');
+        // If the cardback has no content, send it through control flow that confirms the data, then displays it.
+        if (cardBack.childElementCount === 0) {
+          cocktailApp.confirmDrinkData(this.id, cardBack);
+        } else {
+        // Otherwise, change element classes to animate flip.
+        cocktailApp.changeFlipClasses(this);
+        }
+      } 
+    })
+    listElement.addEventListener('focus', function(e) {
+      const currentPic = document.querySelector('.drink__pic--current');
+      currentPic.classList.remove('drink__pic--current');
+      this.classList.add('drink__pic--current');
+    })
     cocktailApp.drinksList.append(listElement);
   });
 
