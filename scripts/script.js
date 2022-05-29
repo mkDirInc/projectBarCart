@@ -9,9 +9,7 @@ cocktailApp.drinkSection = document.querySelector('.drinks')
 cocktailApp.drinksList = document.querySelector('.drinks__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
-
-// calling all arrow icon/button elements
-const buttons = document.querySelectorAll('[data-button]');
+cocktailApp.carouselButtons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
   cocktailApp.prepareSubmitListener();
@@ -115,9 +113,9 @@ cocktailApp.displayDrinks = function (data) {
   // giving the first child element (li) a class of "drink__pic--current"
   cocktailApp.drinksList.children[0].classList.add('drink__pic--current');
 
-  buttons.forEach(button => {
+  cocktailApp.carouselButtons.forEach(button => {
     // adding function to show button on the page once results are found
-    button.classList.remove('drink__button--hidden');
+    button.classList.remove('drinks__button--hidden');
     button.addEventListener('click', () => {
       // button.classList.add('.drink__button--clicked');
       // this gives the offset value depends on the values of dataset
