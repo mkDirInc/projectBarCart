@@ -677,7 +677,6 @@ input[type=text] {
   font-size: 1rem;
   background-color: rgba(238, 238, 238, 0.7);
   outline: none;
-  border: none;
 }
 input[type=text]:hover, input[type=text]:focus {
   background-color: #eee;
