@@ -1,14 +1,12 @@
-.popup__container--closed {
-  background: url("../assets/jakob-braun-bricks.jpg") no-repeat center / cover fixed;
-  filter: grayscale(70%) brightness(90%);
+.popup__container {
+  background-color: rgba($color: $accent, $alpha: 0.5);
   width: 40%;
   border-radius: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  transition: transform 0.3s, top 0.3s;
-  visibility: hidden;
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.2s ease-in-out;
   text-align: center;
   padding: 20px;
   display: flex;
@@ -16,18 +14,23 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  .popup__text--title {
+  &--hidden {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+  }
+  .popup__title {
     text-transform: uppercase;
     color: $summerYellow;
   }
-  .popup__text--content {
+  .popup__content {
     font-style: italic;
     color: $neonGreen;
   }
   .popup__button {
     text-transform: uppercase;
     background-color: rgba($color: $dustyOrange, $alpha: 0.5);
-    color: $neonPink;
+    color: $darkRed;
     padding: 10px 15px;
     font-weight: bold;
     border-color: $white;
@@ -44,10 +47,4 @@
       color: $black;
     }
   }
-}
-
-.popup__container--open {
-  top: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  visibility: visible;
 }

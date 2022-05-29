@@ -34,25 +34,25 @@
       </fieldset>
       <label for="search-bar" class="sr-only">Search bar</label>
       <input type="text" name="search-bar" id="search-bar" placeholder="What are we in the mood for?" required />
-      <button type="submit">Let's Drink</button>
+      <button class="form__button" type="submit">Let's Drink</button>
     </form>
     <section class="drinks">
       <div class="wrapper drinks__wrapper">
         <!-- HTML Validator recommends adding a heading here. Something to consider. -->
         <div class="drink__container" data-carousel>
-          <i class="drink__button drink__button--hidden fa-solid fa-caret-left" data-button="prev"></i>
+          <button class="drink__button drink__button--hidden" data-button="prev"><i class="fa-solid fa-caret-left"></i></button>
           <ul class="drink__list" data-slides>
             <!-- Drink results go here -->
           </ul>
-          <i class="drink__button drink__button--hidden fa-solid fa-caret-right" data-button="next"></i>
+          <button class="drink__button drink__button--hidden" data-button="prev"><i class="fa-solid fa-caret-right"></i></button>
         </div>
       </div>
     </section>
     <section class="popup">
-      <div class="popup__container--closed">
-        <h2 class="popup__text--title">Sorry!</h2>
-        <p class="popup__text--content">Our drink monkeys couldn't find anything. Here is our suggestion for tonight!</p>
-        <button class="popup__button">Let's GIT it!!!</button>
+      <div class="popup__container popup__container--hidden">
+        <h2 class="popup__title">Sorry!</h2>
+        <p class="popup__content">Our drink monkeys couldn't find anything. Here is our suggestion for tonight!</p>
+        <button class="popup__button">Thanks!</button>
       </div>
     </section>
   </main>
