@@ -9,6 +9,7 @@ cocktailApp.drinkSection = document.querySelector('.drinks')
 cocktailApp.drinkList = document.querySelector('.drink__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
+cocktailApp.popup = document.querySelector('.popup__container--closed');
 
 // calling all arrow icon/button elements
 const buttons = document.querySelectorAll('[data-button]');
@@ -53,6 +54,12 @@ cocktailApp.prepareSubmitListener = function () {
 };
 
 cocktailApp.getRandomCocktail = function() {
+  // adding pop-up function
+  cocktailApp.popup.classList.add('popup__container--open')
+  const popupButton = this.popup.querySelector('.popup__button');
+  
+  popupButton.addEventListener('click', () => {
+  
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
     .then((res) => {
       if (res.ok) {
@@ -69,6 +76,9 @@ cocktailApp.getRandomCocktail = function() {
     .catch((err) => {
       console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
     });
+    
+    cocktailApp.popup.classList.remove('popup__container--open');
+  })
 }
 
 // For each drink in the provided data, this appends a card to <ul class="drink__list".>
