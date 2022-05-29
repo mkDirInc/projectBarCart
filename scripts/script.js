@@ -111,7 +111,9 @@ cocktailApp.displayDrinks = function (data) {
 
   // carousel function
   // giving the first child element (li) a class of "drink__pic--current"
-  cocktailApp.drinksList.children[0].classList.add('drink__pic--current');
+  const firstDrink = cocktailApp.drinksList.children[0]
+  firstDrink.classList.add('drink__pic--current');
+  cocktailApp.changeDrinkSectionHeight(firstDrink);
 
   cocktailApp.carouselButtons.forEach(button => {
     // adding function to show button on the page once results are found
@@ -246,7 +248,11 @@ cocktailApp.changeDrinkSectionHeight = function(element) {
   } else {
     frontFacingCard = element.querySelector('.front');
   }
-  this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.5}px`;
+  const drinkSectionHeight = this.drinkSection.style.height.slice(0, -2);
+  const cardHeightRequirement = frontFacingCard.clientHeight * 2;
+  if (drinkSectionHeight < cardHeightRequirement || drinkSectionHeight === undefined) {
+    this.drinkSection.style.height = `${cardHeightRequirement}px`;
+  };
 }
 
 cocktailApp.getCardBackFontClass = function(strDrink) {

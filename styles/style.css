@@ -398,7 +398,6 @@ footer {
 }
 
 .drinks {
-  margin: 165px 0;
   -webkit-transition: height 1s ease-out;
   transition: height 1s ease-out;
 }
@@ -414,6 +413,9 @@ footer {
           align-items: center;
   -webkit-transition: height 1s ease-in-out;
   transition: height 1s ease-in-out;
+}
+.drinks__heading {
+  font-size: 2rem;
 }
 .drinks__container {
   width: 100%;
@@ -445,6 +447,7 @@ footer {
 }
 
 .drink {
+  margin: 165px 0;
   position: absolute;
   width: 300px;
   height: 400px;
