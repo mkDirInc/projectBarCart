@@ -65,20 +65,21 @@ label {
 
 button {
   text-transform: uppercase;
-  background: $teal;
+  background-color: rgba($color: $accent, $alpha: 0.3);
   color: $white;
   padding: 10px 15px;
   font-weight: bold;
   border-color: $white;
   margin-top: 20px;
-  box-shadow: 0px 5px 10px $dustyOrange;
-  &:hover,
-  &:focus {
-    background-color: rgba($color: $darkRed, $alpha: 0.3);
+  border-radius: 40px;
+  box-shadow: 0px 20px 30px rgba($color: $teal, $alpha: 1);
+  transition: all 0.2s;
+  position: relative;
+  top: 0px;
+  &:active {
+    background-color: rgba($color: $accent, $alpha: 0.5);
+    box-shadow: 0px 20px 20px rgba($color: $teal, $alpha: 0.5);
+    top: 5px;
+    color: $black;
   }
-}
-
-.button--clicked {
-  background-color: rgba($color: $darkRed, $alpha: 1);
-  box-shadow: 0px 1px 2px $dustyOrange;
 }

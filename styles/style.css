@@ -618,10 +618,19 @@ footer {
   -ms-flex-item-align: center;
       align-self: center;
   cursor: pointer;
-  text-shadow: 0px 5px 10px #05AFC1;
+  text-shadow: 0px 10px 10px #FF8327;
+  position: relative;
+  top: 0px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .drink__button:hover, .drink__button:focus {
   color: #FFC60D;
+  text-shadow: 0px 10px 10px #588DC0;
+}
+.drink__button:active {
+  text-shadow: 0px 5px 5px #588DC0;
+  top: 5px;
 }
 .drink__button--hidden {
   opacity: 0;
@@ -722,21 +731,24 @@ label {
 
 button {
   text-transform: uppercase;
-  background: #588DC0;
+  background-color: rgba(5, 175, 193, 0.3);
   color: #fff;
   padding: 10px 15px;
   font-weight: bold;
   border-color: #fff;
   margin-top: 20px;
-  -webkit-box-shadow: 0px 5px 10px #FF8327;
-          box-shadow: 0px 5px 10px #FF8327;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 20px 30px #588dc0;
+          box-shadow: 0px 20px 30px #588dc0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  position: relative;
+  top: 0px;
 }
-button:hover, button:focus {
-  background-color: rgba(85, 25, 25, 0.3);
-}
-
-.button--clicked {
-  background-color: #551919;
-  -webkit-box-shadow: 0px 1px 2px #FF8327;
-          box-shadow: 0px 1px 2px #FF8327;
+button:active {
+  background-color: rgba(5, 175, 193, 0.5);
+  -webkit-box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
+          box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
+  top: 5px;
+  color: #2c2c2c;
 }

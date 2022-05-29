@@ -32,8 +32,6 @@ cocktailApp.getFetchURL = function () {
 cocktailApp.prepareSubmitListener = function () {
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    this.submitButton.classList.toggle('button--clicked');
     
     fetch(this.getFetchURL())
       .then((res) => {
@@ -119,7 +117,6 @@ cocktailApp.displayDrinks = function (data) {
     // adding function to show button on the page once results are found
     button.classList.remove('drink__button--hidden');
     button.addEventListener('click', () => {
-      // button.classList.add('.drink__button--clicked');
       // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;
       // declaring currentPic of li which has 'date-active' attribute
