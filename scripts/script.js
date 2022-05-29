@@ -249,7 +249,7 @@ cocktailApp.changeDrinkSectionHeight = function(element) {
     frontFacingCard = element.querySelector('.front');
   }
   const drinkSectionHeight = this.drinkSection.style.height.slice(0, -2);
-  const cardHeightRequirement = frontFacingCard.clientHeight * 2;
+  const cardHeightRequirement = frontFacingCard.clientHeight * 1.5;
   if (drinkSectionHeight < cardHeightRequirement || drinkSectionHeight === undefined) {
     this.drinkSection.style.height = `${cardHeightRequirement}px`;
   };
