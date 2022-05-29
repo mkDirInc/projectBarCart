@@ -24,16 +24,16 @@
   </header>
   <main>
     <form action="submit">
-      <fieldset>
+      <fieldset class="search-type">
         <legend class="sr-only">Search by cocktail name or ingredient</legend>
-        <input type="radio" name="search-type" value="name" id="name" checked />
-        <label for="name">Cocktail Name</label>
-        <img src="./assets/cocktailshaker.png" alt="icon of cocktail shaker" class="form__shaker">
-        <input type="radio" name="search-type" value="ingredient" id="ingredient" />
-        <label for="ingredient">Ingredient</label>
+        <input type="radio" name="search-type" value="name" id="name" class="search-type__name__radio" data-placeholder='ex: "margarita"' />
+        <label for="name" class="search-type__name__label">Cocktail <span>Name</span></label>
+        <input type="radio" name="search-type" value="ingredient" id="ingredient" class="search-type__ingredient__radio" data-placeholder='ex: "tequila"' />
+        <label for="ingredient" class="search-type__ingredient__label">Ingredient</label>
+        <img src="./assets/cocktailshaker.png" alt="icon of cocktail shaker" class="search-type__shaker">
       </fieldset>
       <label for="search-bar" class="sr-only">Search bar</label>
-      <input type="text" name="search-bar" id="search-bar" placeholder="What are we in the mood for?" required />
+      <input type="text" name="search-bar" id="search-bar" placeholder="Select search type" required />
       <button type="submit">Let's Drink</button>
     </form>
     <section class="drinks">

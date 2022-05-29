@@ -7,7 +7,7 @@ cocktailApp.endpoint = 'https://www.thecocktaildb.com';
 cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkSection = document.querySelector('.drinks')
 cocktailApp.drinkList = document.querySelector('.drink__list');
-cocktailApp.userInput = document.getElementById('search-bar');
+cocktailApp.searchBar = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
 
 // calling all arrow icon/button elements
@@ -15,11 +15,21 @@ const buttons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
   cocktailApp.prepareSubmitListener();
+  cocktailApp.changePlaceholderText();
+};
+
+cocktailApp.changePlaceholderText = function() {
+  this.form.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-placeholder')) {
+      cocktailApp.searchBar.setAttribute('placeholder', e.target.dataset.placeholder);
+    };
+
+  });
 };
 
 // Compiles and returns fetch URL based on user's search parameters.
 cocktailApp.getFetchURL = function () {
-  const searchTerm = this.userInput.value;
+  const searchTerm = this.searchBar.value;
   const searchTypeChoice = document.querySelector(
     'input[name="search-type"]:checked'
   ).value;
