@@ -442,6 +442,8 @@ footer {
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
   cursor: pointer;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 .drink.flipped .drink__content {
   -webkit-transform: rotateY(180deg);
@@ -612,6 +614,8 @@ footer {
   margin-bottom: 20px;
 }
 .drink__button {
+  background: none;
+  border: none;
   color: #ff950a;
   font-size: 5rem;
   z-index: 11;
@@ -729,7 +733,7 @@ label {
   padding: 25px;
 }
 
-button {
+.form__button {
   text-transform: uppercase;
   background-color: rgba(5, 175, 193, 0.3);
   color: #fff;
@@ -745,10 +749,76 @@ button {
   position: relative;
   top: 0px;
 }
-button:active {
+.form__button:active {
   background-color: rgba(5, 175, 193, 0.5);
   -webkit-box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
           box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
+  top: 5px;
+  color: #2c2c2c;
+}
+
+.popup__container {
+  background-color: rgba(238, 238, 238, 0.1);
+  width: 40%;
+  border-radius: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.popup__container--hidden {
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0.1);
+          transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+}
+.popup__container .popup__title {
+  text-transform: uppercase;
+  color: #FFC60D;
+}
+.popup__container .popup__content {
+  font-style: italic;
+  color: #33ff00;
+}
+.popup__container .popup__button {
+  text-transform: uppercase;
+  background-color: rgba(255, 131, 39, 0.5);
+  color: #551919;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-color: #fff;
+  margin-top: 20px;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 20px 20px #ea593e;
+          box-shadow: 0px 20px 20px #ea593e;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  position: relative;
+  top: 0px;
+}
+.popup__container .popup__button:active {
+  background-color: #ff8327;
+  -webkit-box-shadow: 0px 20px 10px rgba(234, 89, 62, 0.5);
+          box-shadow: 0px 20px 10px rgba(234, 89, 62, 0.5);
   top: 5px;
   color: #2c2c2c;
 }
