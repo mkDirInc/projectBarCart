@@ -115,7 +115,11 @@ cocktailApp.displayDrinks = function (data) {
 
   buttons.forEach(button => {
     // adding function to show button on the page once results are found
+    if (cocktailApp.drinkList.children.length !== 1) {
     button.classList.remove('drink__button--hidden');
+    } else {
+      button.classList.add('drink__button--hidden');
+    }
     button.addEventListener('click', () => {
       // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;
