@@ -758,7 +758,7 @@ label {
 }
 
 .popup__container {
-  background-color: rgba(5, 175, 193, 0.5);
+  background-color: rgba(238, 238, 238, 0.1);
   width: 40%;
   border-radius: 50px;
   position: absolute;
