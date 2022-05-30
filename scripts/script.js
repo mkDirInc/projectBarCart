@@ -13,6 +13,9 @@ cocktailApp.popup = document.querySelector('.popup__container');
 cocktailApp.popupButton = cocktailApp.popup.querySelector('.popup__button');
 cocktailApp.carouselButtons = document.querySelectorAll('[data-button]');
 
+cocktailApp.alertPopup = document.querySelector('.popup__alert');
+cocktailApp.alertButton = cocktailApp.alertPopup.querySelector('.alert__button');
+
 cocktailApp.init = () => {
   cocktailApp.prepareSubmitListener();
   cocktailApp.changePlaceholderText();
@@ -89,9 +92,18 @@ cocktailApp.getRandomCocktail = function() {
       cocktailApp.displayDrinks(drinkData);
     })
     .catch((err) => {
-      console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
+      // console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
+      cocktailApp.displayAlertPopup();
     });
-    
+}
+
+// adding alert-popup function
+cocktailApp.displayAlertPopup = function () {
+  this.alertPopup.classList.remove('popup__alert--hidden')
+
+  this.alertButton.addEventListener('click', () => {
+    this.alertPopup.classList.add('popup__alert--hidden');
+  })
 }
 
 // For each drink in the provided data, this appends a card to <ul class="drink__list".>
@@ -232,7 +244,8 @@ cocktailApp.confirmDrinkData = function (drinkId, cardBack) {
       this.fillCardBack(cardBack, this.drinks[index]);
     })
     .catch((err) => {
-      console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
+      // console.log(`Our drink monkeys couldn't find anything. Sorry. :(`, err);
+      cocktailApp.displayAlertPopup();
     });
 };
 
