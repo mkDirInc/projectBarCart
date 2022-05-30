@@ -46,38 +46,37 @@ cocktailApp.prepareSubmitListener = function () {
     e.preventDefault();
     
     fetch(this.getFetchURL())
-      .then((res) => {
+    .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           throw new Error(
             `We couldn't find anything that matched your search term. How about a random cocktail?`
-          );
-        }
-      })
-      .then((drinkData) => {
+            );
+          }
+        })
+        .then((drinkData) => {
         cocktailApp.displayDrinks(drinkData);
       })
       .catch((err) => {
         cocktailApp.displayPopup();
       });
-  });
+    });
 };
 
-// adding pop-up function
+// Displays a pop up that lets the user that no search results were found. Clicking on the displayed button fetches a random cocktail.
 cocktailApp.displayPopup = function () {
+  this.drinksList.innerHTML = '';
   this.popup.classList.remove('popup__container--hidden')
   
   this.popupButton.addEventListener('click', () => {
-  
-  this.getRandomCocktail();
-  this.popup.classList.add('popup__container--hidden');
-
+    this.getRandomCocktail();
+    this.popup.classList.add('popup__container--hidden');
   })
 }
 
+// Does what it says!
 cocktailApp.getRandomCocktail = function() {
-  
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
     .then((res) => {
       if (res.ok) {
@@ -167,7 +166,7 @@ cocktailApp.displayDrinks = function (data) {
   // giving the first child element (li) a class of "drink__pic--current"
   const firstDrink = cocktailApp.drinksList.children[0]
   firstDrink.classList.add('drink__pic--current');
-  cocktailApp.changeDrinkSectionHeight(firstDrink);
+  cocktailApp.adjustDrinkSectionHeight(firstDrink);
 
   cocktailApp.carouselButtons.forEach(button => {
     // adding function to show button on the page once results are found
@@ -191,7 +190,7 @@ cocktailApp.displayDrinks = function (data) {
         newIndex = 0;
       }
       picList[newIndex].classList.add('drink__pic--current');
-      cocktailApp.changeDrinkSectionHeight(picList[newIndex]);
+      cocktailApp.adjustDrinkSectionHeight(picList[newIndex]);
       currentPic.classList.remove('drink__pic--current');
     })
   })
@@ -209,6 +208,7 @@ cocktailApp.handleCardClick = function () {
   }
 };
 
+// Changes the classes on a flipping card to animate it.
 cocktailApp.changeFlipClasses = function(drinkElement) {
   drinkElement.classList.toggle('drink--flipped');
   
@@ -217,7 +217,7 @@ cocktailApp.changeFlipClasses = function(drinkElement) {
     cardBack.querySelector('.back__recipe').classList.toggle('back__recipe--flipped');
     cardBack.querySelector('.back__title').classList.toggle('back__title--flipped');
   }, 1);
-  cocktailApp.changeDrinkSectionHeight(drinkElement);
+  cocktailApp.adjustDrinkSectionHeight(drinkElement);
 }
 
 // This confirms that the cached drinked data is complete before passing it along fillCardBack().
@@ -299,17 +299,18 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
 }
 
 // Changes the height of the drink section based on the size of the card being flipped to.
-cocktailApp.changeDrinkSectionHeight = function(element) {
+cocktailApp.adjustDrinkSectionHeight = function(element) {
   let frontFacingCard;
   if (element.classList.contains('drink--flipped')) {
     frontFacingCard = element.querySelector('.back');
-    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.3}px`;
+    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.5}px`;
   } else {
     frontFacingCard = element.querySelector('.front');
-    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.5}px`;
+    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 2.5}px`;
   }
 }
 
+// Supplies class names based on length of drink name.
 cocktailApp.getCardBackFontClass = function(strDrink) {
   if (strDrink.length < 10) return 'back__name--short';
   if (strDrink.length < 14) return 'back__name--medium';
