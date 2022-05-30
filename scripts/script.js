@@ -288,12 +288,13 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
 // Changes the height of the drink section based on the size of the card being flipped to.
 cocktailApp.changeDrinkSectionHeight = function(element) {
   let frontFacingCard;
-  if (element.classList.contains('flipped')) {
-    frontFacingCard = element.querySelector('.back'); 
+  if (element.classList.contains('drink--flipped')) {
+    frontFacingCard = element.querySelector('.back');
+    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.3}px`;
   } else {
     frontFacingCard = element.querySelector('.front');
+    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.5}px`;
   }
-  this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.2}px`;
 }
 
 cocktailApp.getCardBackFontClass = function(strDrink) {

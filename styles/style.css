@@ -799,8 +799,8 @@ label:hover, label:focus {
 }
 
 .popup__container {
-  background-color: rgba(238, 238, 238, 0.1);
-  width: 40%;
+  background-color: rgba(238, 238, 238, 0.5);
+  width: 30%;
   border-radius: 50px;
   position: absolute;
   top: 50%;
@@ -810,7 +810,7 @@ label:hover, label:focus {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
