@@ -44,7 +44,9 @@ cocktailApp.getFetchURL = function () {
 cocktailApp.prepareSubmitListener = function () {
   cocktailApp.form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+    // hide the drink section heading, if revealed, in case of an erroneous search
+    this.drinkSectionHeading.classList.add('drinks__heading--hidden');
+    // Get appropriate URL based on user selection and FETCH!
     fetch(this.getFetchURL())
     .then((res) => {
         if (res.ok) {
