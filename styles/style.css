@@ -863,3 +863,52 @@ label:hover, label:focus {
   top: 5px;
   color: #2c2c2c;
 }
+
+.popup__alert {
+  background-color: #eeeeee;
+  width: 50%;
+  height: 50%;
+  border-radius: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  padding: 20px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  gap: 20px;
+}
+.popup__alert--hidden {
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0.1);
+          transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+}
+.popup__alert .alert__button {
+  border: none;
+  color: #551919;
+  font-size: 3rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+.popup__alert .alert__image {
+  width: 50%;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.popup__alert .alert__text {
+  color: #2c2c2c;
+  font-size: 2rem;
+}

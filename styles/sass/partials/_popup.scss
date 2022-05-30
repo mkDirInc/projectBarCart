@@ -48,3 +48,40 @@
     }
   }
 }
+
+.popup__alert {
+  background-color: rgba($color: $offWhite, $alpha: 1);
+  width: 50%;
+  height: 50%;
+  border-radius: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  &--hidden {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+  }
+  .alert__button {
+    border: none;
+    color: $darkRed;
+    font-size: 3rem;
+    align-self: flex-end;
+  }
+  .alert__image {
+    width: 50%;
+    align-self: center;
+  }
+  .alert__text {
+    color: $black;
+    font-size: 2rem;
+  }
+}
