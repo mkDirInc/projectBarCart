@@ -234,7 +234,7 @@ html {
 }
 
 body {
-  font-family: Raleway, cursive;
+  font-family: "Permanent Marker", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1, h2, h3, h4, p {
@@ -246,6 +246,10 @@ h1 {
   font-family: Neonderthaw, cursive;
   font-size: clamp(4rem, 30vw, 8rem);
   letter-spacing: clamp(-0.15rem, -0.5vw, 0.1rem);
+}
+
+button {
+  font-family: "Permanent Marker", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -417,7 +421,16 @@ footer {
   transition: height 1s ease-in-out;
 }
 .drinks__heading {
-  font-size: 2rem;
+  margin-top: 40px;
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
+  text-align: center;
+  color: #FFC60D;
+  text-shadow: 3px 3px #588DC0;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+}
+.drinks__heading--hidden {
+  display: none;
 }
 .drinks__container {
   width: 100%;
@@ -460,9 +473,9 @@ footer {
 }
 
 .drink {
-  margin: 165px 0;
+  margin: 150px 0;
   position: absolute;
-  width: 300px;
+  width: clamp(300px, 30vw, 400px);
   height: 400px;
   -webkit-perspective: 1000px;
           perspective: 1000px;
@@ -474,6 +487,10 @@ footer {
   cursor: pointer;
   -webkit-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
+}
+.drink--current {
+  opacity: 1;
+  z-index: 10;
 }
 .drink--flipped .drink__content {
   -webkit-transform: rotateY(180deg);
@@ -587,8 +604,8 @@ footer {
   width: 100%;
   margin: 0 auto -40% auto;
   border-radius: 50%;
-  -webkit-transform: rotate(20deg) translate(-17%, -40%);
-          transform: rotate(20deg) translate(-17%, -40%);
+  -webkit-transform: rotate(20deg) translate(-15%, -40%);
+          transform: rotate(20deg) translate(-15%, -40%);
   -webkit-box-shadow: 5px 5px 10px #2c2c2c;
           box-shadow: 5px 5px 10px #2c2c2c;
 }
@@ -647,11 +664,6 @@ footer {
   margin-bottom: 20px;
 }
 
-.drink__pic--current {
-  opacity: 1;
-  z-index: 10;
-}
-
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -695,7 +707,6 @@ input[type=text] {
   font-size: 1rem;
   background-color: rgba(238, 238, 238, 0.7);
   outline: none;
-  border: none;
 }
 input[type=text]:hover, input[type=text]:focus {
   background-color: #eee;
@@ -727,8 +738,8 @@ label:hover, label:focus {
   background-color: rgba(5, 175, 193, 0.3);
   color: #fff;
   padding: 10px 15px;
-  font-weight: bold;
   border-color: #fff;
+  -webkit-text-stroke: 1px #2e2e2e;
   margin-top: 20px;
   border-radius: 40px;
   -webkit-box-shadow: 0px 20px 30px #588dc0;
@@ -800,17 +811,15 @@ label:hover, label:focus {
 
 .popup__container {
   background-color: rgba(238, 238, 238, 0.5);
-  width: 30%;
+  margin: 50px auto;
+  width: clamp(300px, 50vw, 500px);
   border-radius: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -824,13 +833,16 @@ label:hover, label:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   gap: 20px;
+  -webkit-box-shadow: 3px 3px 3px #2c2c2c, inset 3px 3px 3px #fff, inset -3px -3px 3px #2c2c2c;
+          box-shadow: 3px 3px 3px #2c2c2c, inset 3px 3px 3px #fff, inset -3px -3px 3px #2c2c2c;
 }
 .popup__container--hidden {
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0.1);
-          transform: translate(-50%, -50%) scale(0.1);
-  visibility: hidden;
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+  display: none;
 }
 .popup__container .popup__title {
   text-transform: uppercase;
@@ -842,24 +854,24 @@ label:hover, label:focus {
 }
 .popup__container .popup__button {
   text-transform: uppercase;
+  -webkit-text-stroke: 1px rgba(238, 238, 238, 0.5);
   background-color: rgba(255, 131, 39, 0.5);
   color: #551919;
   padding: 10px 15px;
-  font-weight: bold;
   border-color: #fff;
   margin-top: 20px;
   border-radius: 40px;
-  -webkit-box-shadow: 0px 20px 20px #ea593e;
-          box-shadow: 0px 20px 20px #ea593e;
+  -webkit-box-shadow: 0px 10px 10px #ea593e;
+          box-shadow: 0px 10px 10px #ea593e;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
   position: relative;
   top: 0px;
 }
 .popup__container .popup__button:active {
-  background-color: #ff8327;
-  -webkit-box-shadow: 0px 20px 10px rgba(234, 89, 62, 0.5);
-          box-shadow: 0px 20px 10px rgba(234, 89, 62, 0.5);
+  background-color: rgba(255, 131, 39, 0.7);
+  -webkit-box-shadow: 0px 5px 5px rgba(234, 89, 62, 0.5);
+          box-shadow: 0px 5px 5px rgba(234, 89, 62, 0.5);
   top: 5px;
   color: #2c2c2c;
 }
@@ -894,7 +906,7 @@ label:hover, label:focus {
   top: 50%;
   -webkit-transform: translate(-50%, -50%) scale(0.1);
           transform: translate(-50%, -50%) scale(0.1);
-  visibility: hidden;
+  display: none;
 }
 .popup__alert .alert__button {
   border: none;

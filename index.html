@@ -1,73 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Neonderthaw&family=Permanent+Marker&family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/assets/safari-pinned-tab.svg"
+      color="#ff0099"
+    />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/daf18e1bf9.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Bar Cart - Home Page</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Neonderthaw&family=Permanent+Marker&family=Raleway&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./styles/style.css" />
-  <script src="https://kit.fontawesome.com/daf18e1bf9.js" crossorigin="anonymous"></script>
-  <title>Bar Cart - Home Page</title>
-</head>
-
-<body>
-  <header>
-    <h1 class="heading__text">
-      <span class="heading__text--bar">Bar</span>
-      <span class="heading__text--cart"> Cart</span>
-    </h1>
-  </header>
-  <main>
-    <form action="submit">
-      <fieldset class="search-type">
-        <legend class="sr-only">Search by cocktail name or ingredient</legend>
-        <input type="radio" name="search-type" value="name" id="name" class="search-type__name__radio" data-placeholder='ex: "margarita"' />
-        <label for="name" class="search-type__name__label">Cocktail <span>Name</span></label>
-        <input type="radio" name="search-type" value="ingredient" id="ingredient" class="search-type__ingredient__radio" data-placeholder='ex: "tequila"' />
-        <label for="ingredient" class="search-type__ingredient__label">Ingredient</label>
-        <img src="./assets/cocktailshaker.png" alt="icon of cocktail shaker" class="search-type__shaker">
-      </fieldset>
-      <label for="search-bar" class="sr-only">Search bar</label>
-      <input type="text" name="search-bar" id="search-bar" placeholder="Select search type" required />
-      <button class="form__button" type="submit">Let's Drink</button>
-    </form>
-    <section class="drinks">
-      <div class="wrapper drinks__wrapper">
-        <h2 class="drinks__heading"></h2>
-        <div class="drinks__container">
-          <button class="drinks__button drinks__button--hidden" data-button="prev"><i class="fa-solid fa-caret-left"></i></button>
-          <ul class="drinks__list">
-            <!-- Drink results go here -->
-          </ul>
-          <button class="drinks__button drinks__button--hidden" data-button="prev"><i class="fa-solid fa-caret-right"></i></button>
+  <body>
+    <header>
+      <h1 class="heading__text">
+        <span class="heading__text--bar">Bar</span>
+        <span class="heading__text--cart"> Cart</span>
+      </h1>
+    </header>
+    <main>
+      <form action="submit">
+        <fieldset class="search-type">
+          <legend class="sr-only">Search by cocktail name or ingredient</legend>
+          <input
+            type="radio"
+            name="search-type"
+            value="name"
+            id="name"
+            class="search-type__name__radio"
+            data-placeholder='ex: "margarita"'
+          />
+          <label for="name" class="search-type__name__label"
+            >Cocktail <span>Name</span></label
+          >
+          <input
+            type="radio"
+            name="search-type"
+            value="ingredient"
+            id="ingredient"
+            class="search-type__ingredient__radio"
+            data-placeholder='ex: "tequila"'
+          />
+          <label for="ingredient" class="search-type__ingredient__label"
+            >Ingredient</label
+          >
+          <img
+            src="./assets/cocktailshaker.png"
+            alt="icon of cocktail shaker"
+            class="search-type__shaker"
+          />
+        </fieldset>
+        <label for="search-bar" class="sr-only">Search bar</label>
+        <input
+          type="text"
+          name="search-bar"
+          id="search-bar"
+          placeholder="Select search type"
+          required
+        />
+        <button class="form__button" type="submit">Let's Drink</button>
+      </form>
+      <section class="popup">
+        <div class="popup__container popup__container--hidden">
+          <h3 class="popup__title">Sorry!</h3>
+          <p class="popup__content">
+            The bartender doesn't seem to know that one.<br />But they have a
+            suggestion!
+          </p>
+          <button class="popup__button">Show me!</button>
         </div>
-      </div>
-    </section>
-    <section class="popup">
-      <div class="popup__container popup__container--hidden">
-        <h2 class="popup__title">Sorry!</h2>
-        <p class="popup__content">Our drink monkeys couldn't find anything.<br />Here is our suggestion for tonight!</p>
-        <button class="popup__button">Thanks!</button>
-      </div>
-      <div class="popup__alert popup__alert--hidden">
-        <button class="alert__button"><i class="fa-solid fa-circle-xmark"></i></button>
-        <img src="./assets/Sorry-we-are-Closed-Sign.svg" alt="we are closed sign" class="alert__image">
-        <p class="alert__text">Please try again later.</p>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p class="footer__text">
-      Created at <a href="https://junocollege.com/" class="footer__text--juno">Juno College
-      </a>
-    </p>
-  </footer>
-  <script src="./scripts/script.js"></script>
-</body>
-
+        <div class="popup__alert popup__alert--hidden">
+          <button class="alert__button">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+          <img
+            src="./assets/Sorry-we-are-Closed-Sign.svg"
+            alt="we are closed sign"
+            class="alert__image"
+          />
+          <p class="alert__text">Please try again later.</p>
+        </div>
+      </section>
+      <section class="drinks">
+        <h2 class="drinks__heading drinks__heading--hidden">
+          Click a drink to see more!
+        </h2>
+        <div class="wrapper drinks__wrapper">
+          <div class="drinks__container">
+            <button
+              class="drinks__button drinks__button--hidden"
+              data-button="prev"
+            >
+              <i class="fa-solid fa-caret-left"></i>
+            </button>
+            <ul class="drinks__list">
+              <!-- Drink results go here -->
+            </ul>
+            <button
+              class="drinks__button drinks__button--hidden"
+              data-button="prev"
+            >
+              <i class="fa-solid fa-caret-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="footer__text">
+        Created at
+        <a href="https://junocollege.com/" class="footer__text--juno"
+          >Juno College
+        </a>
+      </p>
+    </footer>
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>
