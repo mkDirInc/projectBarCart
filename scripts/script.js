@@ -7,7 +7,7 @@ cocktailApp.endpoint = 'https://www.thecocktaildb.com';
 cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkSection = document.querySelector('.drinks')
 cocktailApp.drinksList = document.querySelector('.drinks__list');
-cocktailApp.userInput = document.getElementById('search-bar');
+cocktailApp.searchBar = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
 cocktailApp.popup = document.querySelector('.popup__container');
 cocktailApp.popupButton = cocktailApp.popup.querySelector('.popup__button');
@@ -15,11 +15,20 @@ cocktailApp.carouselButtons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
   cocktailApp.prepareSubmitListener();
+  cocktailApp.changePlaceholderText();
+};
+
+cocktailApp.changePlaceholderText = function() {
+  this.form.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-placeholder')) {
+      cocktailApp.searchBar.setAttribute('placeholder', e.target.dataset.placeholder);
+    };
+  });
 };
 
 // Compiles and returns fetch URL based on user's search parameters.
 cocktailApp.getFetchURL = function () {
-  const searchTerm = this.userInput.value;
+  const searchTerm = this.searchBar.value;
   const searchTypeChoice = document.querySelector(
     'input[name="search-type"]:checked'
   ).value;
@@ -139,7 +148,7 @@ cocktailApp.displayDrinks = function (data) {
       currentPic.classList.remove('drink__pic--current');
       this.classList.add('drink__pic--current');
     })
-    cocktailApp.drinkList.append(listElement);
+    cocktailApp.drinksList.append(listElement);
   });
 
   // carousel function
@@ -150,7 +159,7 @@ cocktailApp.displayDrinks = function (data) {
 
   cocktailApp.carouselButtons.forEach(button => {
     // adding function to show button on the page once results are found
-    if (cocktailApp.drinkList.children.length !== 1) {
+    if (cocktailApp.drinksList.children.length !== 1) {
     button.classList.remove('drinks__button--hidden');
     } else {
       button.classList.add('drinks__button--hidden');

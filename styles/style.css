@@ -306,43 +306,45 @@ input[type=radio] {
 }
 
 @-webkit-keyframes flicker {
+  0%, 73% {
+    color: #2e2e2e;
+    text-shadow: none;
+  }
+  75%, 86%, 93%, 97% {
+    text-shadow: none;
+  }
   74%, 85%, 92%, 96%, 100% {
     color: #fff;
     text-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 21px #bbb, 0 0 42px #f09, 0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09, 0 0 200px #f09;
-  }
-  0%, 73%, 75%, 86%, 93%, 97% {
-    color: rgb(46, 46, 46);
-    text-shadow: none;
   }
 }
 
 @keyframes flicker {
+  0%, 73% {
+    color: #2e2e2e;
+    text-shadow: none;
+  }
+  75%, 86%, 93%, 97% {
+    text-shadow: none;
+  }
   74%, 85%, 92%, 96%, 100% {
     color: #fff;
     text-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 21px #bbb, 0 0 42px #f09, 0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09, 0 0 200px #f09;
   }
-  0%, 73%, 75%, 86%, 93%, 97% {
-    color: rgb(46, 46, 46);
-    text-shadow: none;
-  }
 }
 @-webkit-keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
-    color: #fff;
-    text-shadow: 0 0 7px #bbb, 0 0 2px #bbb, 0 0 5px #bbb, 0 0 10px #ff950a, 0 0 15px #ff950a, 0 0 20px #ff950a, 0 0 25px #ff950a, 0 0 40px #ff950a, 0 0 50px #ff950a;
+    text-shadow: 0 0 7px #bbb, 0 0 2px #bbb, 0 0 5px #bbb, 0 0 10px #18ff00, 0 0 15px #18ff00, 0 0 20px #18ff00, 0 0 25px #18ff00, 0 0 40px #18ff00, 0 0 50px #18ff00;
   }
   0%, 12%, 46%, 76%, 96% {
-    color: rgb(46, 46, 46);
     text-shadow: none;
   }
 }
 @keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
-    color: #fff;
-    text-shadow: 0 0 7px #bbb, 0 0 2px #bbb, 0 0 5px #bbb, 0 0 10px #ff950a, 0 0 15px #ff950a, 0 0 20px #ff950a, 0 0 25px #ff950a, 0 0 40px #ff950a, 0 0 50px #ff950a;
+    text-shadow: 0 0 7px #bbb, 0 0 2px #bbb, 0 0 5px #bbb, 0 0 10px #18ff00, 0 0 15px #18ff00, 0 0 20px #18ff00, 0 0 25px #18ff00, 0 0 40px #18ff00, 0 0 50px #18ff00;
   }
   0%, 12%, 46%, 76%, 96% {
-    color: rgb(46, 46, 46);
     text-shadow: none;
   }
 }
@@ -665,43 +667,12 @@ form {
       -ms-flex-align: center;
           align-items: center;
 }
-form fieldset {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-form img {
-  min-width: 10%;
-  width: 10%;
-  -webkit-transform: rotate(30deg);
-          transform: rotate(30deg);
-  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
-  transition: -webkit-transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
-  transition: transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
-  transition: transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4), -webkit-transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
-}
-
-input[value=name]:checked ~ img {
-  -webkit-transform: rotate(-30deg);
-          transform: rotate(-30deg);
-}
 
 input[type=radio] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-}
-input[type=radio]:focus {
   outline: none;
-}
-input[type=radio]:focus + label {
-  outline: 1px solid #FF8327;
 }
 input[type=radio]:checked + label {
   -webkit-animation: switcher 0.7s forwards;
@@ -720,22 +691,35 @@ input[type=text] {
   transition: background-color 0.5s ease-out, box-shadow 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
   -webkit-transform: translateY(-20px);
           transform: translateY(-20px);
+  font-family: "Permanent Marker", Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(238, 238, 238, 0.7);
   outline: none;
   border: none;
 }
 input[type=text]:hover, input[type=text]:focus {
-  background-color: rgba(255, 255, 255, 0.9);
-  caret-color: #33ff00;
-  -webkit-box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 20px #33ff00, 0 0 40px #33ff00;
-          box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 20px #33ff00, 0 0 40px #33ff00;
+  background-color: #eee;
+  caret-color: #18ff00;
+  -webkit-box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 20px #18ff00, 0 0 40px #18ff00;
+          box-shadow: 0 0 7px #bbb, 0 0 10px #bbb, 0 0 20px #18ff00, 0 0 40px #18ff00;
 }
 
 label {
   text-align: right;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(238, 238, 238, 0.3);
   padding: 25px;
+  font-family: "Permanent Marker", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  -webkit-text-stroke-color: #eee;
+  -webkit-text-stroke-width: 1px;
+  -webkit-transition: 0.3s color ease-out;
+  transition: 0.3s color ease-out;
+}
+label span {
+  display: block;
+}
+label:hover, label:focus {
+  color: #eee;
 }
 
 .form__button {
@@ -761,6 +745,57 @@ label {
           box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
   top: 5px;
   color: #2c2c2c;
+}
+
+.search-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.search-type__name__radio {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.search-type__name__radio:checked ~ .search-type__shaker {
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+}
+.search-type__name__label {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.search-type__ingredient__radio {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+.search-type__ingredient__radio:checked ~ .search-type__shaker {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+.search-type__ingredient__label {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+.search-type__shaker {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  min-width: 10%;
+  width: 10%;
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
+  transition: -webkit-transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
+  transition: transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
+  transition: transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4), -webkit-transform 0.5s cubic-bezier(0.43, -0.41, 0.63, 1.4);
 }
 
 .popup__container {
@@ -803,7 +838,7 @@ label {
 }
 .popup__container .popup__content {
   font-style: italic;
-  color: #33ff00;
+  color: #18ff00;
 }
 .popup__container .popup__button {
   text-transform: uppercase;

@@ -3,32 +3,11 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  fieldset {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  img {
-    min-width: 10%;
-    width: 10%;
-    transform: rotate(30deg);
-    transition: transform .5s cubic-bezier(.43,-0.41,.63,1.4);
-  }
-}
-
-
-input[value=name]:checked ~ img {
-  transform: rotate(-30deg);
 }
 
 input[type=radio] {
   appearance: none;
-  &:focus {
-    outline: none;
-    + label {
-      outline: 1px solid $dustyOrange;
-    }
-  }
+  outline: none;
   &:checked + label{
     animation: switcher 0.7s forwards;
     color: $white;
@@ -42,13 +21,13 @@ input[type=text] {
   border-radius: 10px;
   transition: background-color .5s ease-out, box-shadow .5s ease-out;
   transform: translateY(-20px);
-  // font-family: 'Permanent Marker';
+  font-family: $permanentMarker;
   font-size: 1rem;
-  background-color: rgba($color: $white, $alpha: 0.7);
+  background-color: rgba($color: $offWhite, $alpha: 0.7);
   outline: none;
   border: none;
   &:hover, &:focus {
-    background-color: rgba($color: $white, $alpha: 0.9);
+    background-color: $offWhite;
     caret-color: $neonGreen;
     box-shadow: 0 0 7px $lightGrey,
     0 0 10px $lightGrey,
@@ -59,8 +38,20 @@ input[type=text] {
 
 label {
   text-align: right;
-  color: rgba($color: $white, $alpha: 0.4);
+  color: rgba($color: $offWhite, $alpha: 0.3);
   padding: 25px;
+  font-family: $permanentMarker;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  -webkit-text-stroke-color: $offWhite;
+  -webkit-text-stroke-width: 1px;
+  transition: .3s color ease-out;
+  span {
+    display: block;
+  }
+  &:hover,
+  &:focus {
+    color: $offWhite;
+  }
 }
 
 .form__button {
@@ -82,5 +73,39 @@ label {
     box-shadow: 0px 20px 20px rgba($color: $teal, $alpha: 0.5);
     top: 5px;
     color: $black;
+  }
+}
+
+.search-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__name__radio {
+    order: 1;
+    &:checked {
+      ~.search-type__shaker {
+        transform: rotate(-30deg);
+      }
+    }
+  }
+  &__name__label {
+    order: 1;
+  }
+  &__ingredient__radio {
+    order: 3;
+    &:checked {
+      ~.search-type__shaker {
+        transform: rotate(30deg);
+      }
+    }
+  }
+  &__ingredient__label {
+    order: 3;
+  }
+  &__shaker {
+    order: 2;
+    min-width: 10%;
+    width: 10%;
+    transition: transform .5s cubic-bezier(.43, -0.41, .63, 1.4);
   }
 }

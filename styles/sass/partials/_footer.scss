@@ -4,7 +4,7 @@ footer {
 
 .footer__text {
   text-align: center;
-  font-family: 'Permanent Marker', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: $permanentMarker;
   font-size: clamp(1rem, 6vw, 1.5em);
   &--juno {
     color: $junoOrange;

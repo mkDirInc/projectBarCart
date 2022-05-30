@@ -1,38 +1,38 @@
 @keyframes flicker {
+  0%, 73% {
+    color: $offBlack;
+    text-shadow: none;
+  }
+  75%, 86%, 93%, 97% {
+    text-shadow: none;
+  }
   74%, 85%, 92%, 96%, 100% {
     color: $white;
-    text-shadow: 0 0 7px #bbb,
-    0 0 10px #bbb,
-    0 0 21px #bbb,
-    0 0 42px #f09,
-    0 0 82px #f09,
-    0 0 92px #f09,
-    0 0 102px #f09,
-    0 0 151px #f09,
-    0 0 200px #f09;
-  }
-  
-  0%, 73%, 75%, 86%, 93%, 97% {
-    color: rgb(46, 46, 46);
-    text-shadow: none;
+    text-shadow: 0 0 7px $lightGrey,
+      0 0 10px $lightGrey,
+      0 0 21px $lightGrey,
+      0 0 42px $neonPink,
+      0 0 82px $neonPink,
+      0 0 92px $neonPink,
+      0 0 102px $neonPink,
+      0 0 151px $neonPink,
+      0 0 200px $neonPink;
   }
 }
 
 @keyframes switcher {
   11%, 45%, 75%, 95%, 100% {
-    color: $white;
-    text-shadow: 0 0 7px #bbb,
-      0 0 2px #bbb,
-      0 0 5px #bbb,
-      0 0 10px $lightOrange,
-      0 0 15px $lightOrange,
-      0 0 20px $lightOrange,
-      0 0 25px $lightOrange,
-      0 0 40px $lightOrange,
-      0 0 50px $lightOrange;
+    text-shadow: 0 0 7px $lightGrey,
+      0 0 2px $lightGrey,
+      0 0 5px $lightGrey,
+      0 0 10px $neonGreen,
+      0 0 15px $neonGreen,
+      0 0 20px $neonGreen,
+      0 0 25px $neonGreen,
+      0 0 40px $neonGreen,
+      0 0 50px $neonGreen;
   }
   0%, 12%, 46%, 76%, 96% {
-    color: rgb(46, 46, 46);
     text-shadow: none;
   }
 }
