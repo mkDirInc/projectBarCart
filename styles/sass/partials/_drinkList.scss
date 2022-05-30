@@ -1,25 +1,53 @@
 .drinks {
-  margin: 165px 0;
   transition: height 1s ease-out;
-}
-.drinks__wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: height 1s ease-in-out;
+  }
+  &__heading {
+    font-size: 2rem;
+  }
+  &__container {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__list {
+    position: relative;
+  }
+  &__button {
+    background: none;
+    border: none;
+    color: $lightOrange;
+    font-size: 5rem;
+    z-index: 11;
+    align-self: center;
+    cursor: pointer;
+    text-shadow: 0px 10px 10px $dustyOrange;
+    position: relative;
+    top: 0px;
+    transition: all 0.3s;
+    &:hover,
+    &:focus {
+      color: $summerYellow;
+      text-shadow: 0px 10px 10px $teal;
+    }
+    &:active {
+      text-shadow: 0px 5px 5px $teal;
+      top: 5px;
+    }
+    &--hidden {
+      opacity: 0;
+    }
+  }
 }
 
-.drink__container {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.drink__list {
-  position: relative;
-}
 
 .drink {
+  margin: 165px 0;
   position: absolute;
   width: 300px;
   height: 400px;
@@ -31,7 +59,8 @@
   transform: translate(-50%);
   cursor: pointer;
   transition: opacity .5s ease-in-out;
-  &.flipped &__content {
+  
+  &--flipped &__content {
     transform: rotateY(180deg);
   }
 
@@ -52,9 +81,9 @@
     position: absolute;
     backface-visibility: hidden;
     background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center / cover;
-    box-shadow: 5px 10px 10px black,
-    inset 2px 3px 5px white,
-    inset -2px -3px 5px black;
+    box-shadow: 5px 10px 10px $black,
+    inset 2px 3px 5px $white,
+    inset -2px -3px 5px $black;
   }
 
   .front {
@@ -64,6 +93,7 @@
     height: 450px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     &__img {
       width: 80%;
@@ -71,15 +101,15 @@
       object-fit: fill;
       margin: 20px auto;
       border-radius: 15px;
-      box-shadow: 5px 5px 10px black,
-                  -1px -1px 10px black;
+      box-shadow: 5px 5px 10px $black,
+                  -1px -1px 10px $black;
       transform: rotate(5deg) translateZ(50px);
     }
     &__name {
       display: block;
       font-family: 'Mr Dafoe';
       color: $summerYellow;
-      text-shadow: 3px 3px $teal, 5px 5px 3px black;
+      text-shadow: 3px 3px $teal, 5px 5px 3px $black;
       font-size: 2.5rem;
       padding: 3px 10px;
       transform: rotate(-5deg) translateZ(50px);
@@ -112,16 +142,15 @@
       margin: 0 auto -40% auto;
       border-radius: 50%;
       transform: rotate(20deg) translate(-17%, -40%);
-      box-shadow: 5px 5px 10px black;
+      box-shadow: 5px 5px 10px $black;
     }
-
     &__name {
       position: absolute;
       width: fit-content;
       font-family: 'Mr Dafoe';
       color: $summerYellow;
       text-shadow: 3px 3px $teal,
-                  5px 5px 5px black;
+                  5px 5px 5px $black;
       text-align: center;
       top: 0;
       left: 0;
@@ -132,70 +161,39 @@
         font-size: 2.2rem;
         transform: rotate(-10deg) translateY(-60px);
       }
-      
       &--long {
         font-size: 2.2rem;
         transform: rotate(-10deg) translateY(-50px);
       }
-      
       &--medium {
         font-size: 3rem;
         transform: rotate(-10deg) translateY(-50px);
       }
-      
       &--short {
         font-size: 3rem;
         transform: rotate(-10deg) translateY(-45px);
       }
     }
-    
     &__heading {
       font-family: 'Permanent Marker';
       font-size: 1.4rem;
       margin-bottom: 10px;
-      text-shadow: 1px 1px black,
-                  -1px 1px black,
-                  3px 3px 3px black;
+      text-shadow: 1px 1px $black,
+                  -1px 1px $black,
+                  3px 3px 3px $black;
     }
     &__ingredients,
     &__instructions {
-      color: black;
+      color: $black;
       background-color: $offWhite;
       padding: 20px;
-      box-shadow: 5px 5px 10px black;
+      box-shadow: 5px 5px 10px $black;
       border-radius: 5px;
     }
-
     &__ingredients {
       list-style-type: '– ';
       padding-left: 30px;
       margin-bottom: 20px;
-    }
-  }
-  
-  &__button {
-    background: none;
-    border: none;
-    color: $lightOrange;
-    font-size: 5rem;
-    z-index: 11;
-    align-self: center;
-    cursor: pointer;
-    text-shadow: 0px 10px 10px $dustyOrange;
-    position: relative;
-    top: 0px;
-    transition: all 0.3s;
-    &:hover,
-    &:focus {
-      color: $summerYellow;
-      text-shadow: 0px 10px 10px $teal;
-    }
-    &:active {
-      text-shadow: 0px 5px 5px $teal;
-      top: 5px;
-    }
-    &--hidden {
-      opacity: 0;
     }
   }
 }

@@ -6,13 +6,12 @@ cocktailApp.searchTypes.ingredient = '/api/json/v1/1/filter.php?i=';
 cocktailApp.endpoint = 'https://www.thecocktaildb.com';
 cocktailApp.form = document.querySelector('form');
 cocktailApp.drinkSection = document.querySelector('.drinks')
-cocktailApp.drinkList = document.querySelector('.drink__list');
+cocktailApp.drinksList = document.querySelector('.drinks__list');
 cocktailApp.userInput = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
 cocktailApp.popup = document.querySelector('.popup__container');
 cocktailApp.popupButton = cocktailApp.popup.querySelector('.popup__button');
-// calling all arrow icon/button elements
-const buttons = document.querySelectorAll('[data-button]');
+cocktailApp.carouselButtons = document.querySelectorAll('[data-button]');
 
 cocktailApp.init = () => {
   cocktailApp.prepareSubmitListener();
@@ -93,13 +92,14 @@ cocktailApp.displayDrinks = function (data) {
   // Caching drink data into the cocktailApp namespace so that it can be used to fill card backs later.
   this.drinks = data.drinks;
   // Empty drink list before appending new drinks
-  this.drinkList.innerHTML = '';
+  this.drinksList.innerHTML = '';
   // Append click-ready cards to .drink__list
   this.drinks.forEach((drink) => {
 
     // Create list element and its HTML
     const listElement = document.createElement('li');
     listElement.id = drink.idDrink;
+    listElement.setAttribute('tabindex', '0');
     listElement.classList.add('drink');
     listElement.innerHTML = `
       <div class="drink__content">
@@ -121,26 +121,46 @@ cocktailApp.displayDrinks = function (data) {
 
     // Add an event listener and append to the page
     listElement.addEventListener('click', cocktailApp.handleCardClick);
+    listElement.addEventListener('keyup',function(e) {
+      console.log(e.key);
+      if (e.key === 'Enter' || e.key === ' ') {
+        const cardBack = this.querySelector('.back');
+        // If the cardback has no content, send it through control flow that confirms the data, then displays it.
+        if (cardBack.childElementCount === 0) {
+          cocktailApp.confirmDrinkData(this.id, cardBack);
+        } else {
+        // Otherwise, change element classes to animate flip.
+        cocktailApp.changeFlipClasses(this);
+        }
+      } 
+    })
+    listElement.addEventListener('focus', function(e) {
+      const currentPic = document.querySelector('.drink__pic--current');
+      currentPic.classList.remove('drink__pic--current');
+      this.classList.add('drink__pic--current');
+    })
     cocktailApp.drinkList.append(listElement);
   });
 
   // carousel function
   // giving the first child element (li) a class of "drink__pic--current"
-  cocktailApp.drinkList.children[0].classList.add('drink__pic--current');
+  const firstDrink = cocktailApp.drinksList.children[0]
+  firstDrink.classList.add('drink__pic--current');
+  cocktailApp.changeDrinkSectionHeight(firstDrink);
 
-  buttons.forEach(button => {
+  cocktailApp.carouselButtons.forEach(button => {
     // adding function to show button on the page once results are found
     if (cocktailApp.drinkList.children.length !== 1) {
-    button.classList.remove('drink__button--hidden');
+    button.classList.remove('drinks__button--hidden');
     } else {
-      button.classList.add('drink__button--hidden');
+      button.classList.add('drinks__button--hidden');
     }
     button.addEventListener('click', () => {
       // this gives the offset value depends on the values of dataset
       const offset = button.dataset.button === "next" ? 1 : -1;
       // declaring currentPic of li which has 'date-active' attribute
-      const currentPic = this.drinkList.querySelector('.drink__pic--current');
-      const picList = Array.from(this.drinkList.children);
+      const currentPic = this.drinksList.querySelector('.drink__pic--current');
+      const picList = Array.from(this.drinksList.children);
       // by setting a new index number, we remove and re-assign the drink__pic--current class to the nxt/prev li element and then loop the list within
       let newIndex = picList.indexOf(currentPic) + offset;
       if (newIndex < 0) {
@@ -169,8 +189,8 @@ cocktailApp.handleCardClick = function () {
 };
 
 cocktailApp.changeFlipClasses = function(drinkElement) {
-  drinkElement.classList.toggle('flipped');
-  console.log(drinkElement);
+  drinkElement.classList.toggle('drink--flipped');
+  
   const cardBack = drinkElement.querySelector('.back');
   setTimeout(function() {
     cardBack.querySelector('.back__recipe').classList.toggle('back__recipe--flipped');

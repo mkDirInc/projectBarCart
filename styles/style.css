@@ -398,11 +398,9 @@ footer {
 }
 
 .drinks {
-  margin: 165px 0;
   -webkit-transition: height 1s ease-out;
   transition: height 1s ease-out;
 }
-
 .drinks__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -413,9 +411,13 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: height 1s ease-in-out;
+  transition: height 1s ease-in-out;
 }
-
-.drink__container {
+.drinks__heading {
+  font-size: 2rem;
+}
+.drinks__container {
   width: 100%;
   height: 400px;
   display: -webkit-box;
@@ -425,12 +427,38 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
-.drink__list {
+.drinks__list {
   position: relative;
+}
+.drinks__button {
+  background: none;
+  border: none;
+  color: #ff950a;
+  font-size: 5rem;
+  z-index: 11;
+  -ms-flex-item-align: center;
+      align-self: center;
+  cursor: pointer;
+  text-shadow: 0px 10px 10px #FF8327;
+  position: relative;
+  top: 0px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.drinks__button:hover, .drinks__button:focus {
+  color: #FFC60D;
+  text-shadow: 0px 10px 10px #588DC0;
+}
+.drinks__button:active {
+  text-shadow: 0px 5px 5px #588DC0;
+  top: 5px;
+}
+.drinks__button--hidden {
+  opacity: 0;
 }
 
 .drink {
+  margin: 165px 0;
   position: absolute;
   width: 300px;
   height: 400px;
@@ -445,7 +473,7 @@ footer {
   -webkit-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
 }
-.drink.flipped .drink__content {
+.drink--flipped .drink__content {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
@@ -475,8 +503,8 @@ footer {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center/cover;
-  -webkit-box-shadow: 5px 10px 10px black, inset 2px 3px 5px white, inset -2px -3px 5px black;
-          box-shadow: 5px 10px 10px black, inset 2px 3px 5px white, inset -2px -3px 5px black;
+  -webkit-box-shadow: 5px 10px 10px #2c2c2c, inset 2px 3px 5px #fff, inset -2px -3px 5px #2c2c2c;
+          box-shadow: 5px 10px 10px #2c2c2c, inset 2px 3px 5px #fff, inset -2px -3px 5px #2c2c2c;
 }
 .drink .front {
   -webkit-transform: rotateY(0deg);
@@ -491,6 +519,9 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -502,8 +533,8 @@ footer {
      object-fit: fill;
   margin: 20px auto;
   border-radius: 15px;
-  -webkit-box-shadow: 5px 5px 10px black, -1px -1px 10px black;
-          box-shadow: 5px 5px 10px black, -1px -1px 10px black;
+  -webkit-box-shadow: 5px 5px 10px #2c2c2c, -1px -1px 10px #2c2c2c;
+          box-shadow: 5px 5px 10px #2c2c2c, -1px -1px 10px #2c2c2c;
   -webkit-transform: rotate(5deg) translateZ(50px);
           transform: rotate(5deg) translateZ(50px);
 }
@@ -511,7 +542,7 @@ footer {
   display: block;
   font-family: "Mr Dafoe";
   color: #FFC60D;
-  text-shadow: 3px 3px #588DC0, 5px 5px 3px black;
+  text-shadow: 3px 3px #588DC0, 5px 5px 3px #2c2c2c;
   font-size: 2.5rem;
   padding: 3px 10px;
   -webkit-transform: rotate(-5deg) translateZ(50px);
@@ -556,8 +587,8 @@ footer {
   border-radius: 50%;
   -webkit-transform: rotate(20deg) translate(-17%, -40%);
           transform: rotate(20deg) translate(-17%, -40%);
-  -webkit-box-shadow: 5px 5px 10px black;
-          box-shadow: 5px 5px 10px black;
+  -webkit-box-shadow: 5px 5px 10px #2c2c2c;
+          box-shadow: 5px 5px 10px #2c2c2c;
 }
 .drink .back__name {
   position: absolute;
@@ -566,7 +597,7 @@ footer {
   width: fit-content;
   font-family: "Mr Dafoe";
   color: #FFC60D;
-  text-shadow: 3px 3px #588DC0, 5px 5px 5px black;
+  text-shadow: 3px 3px #588DC0, 5px 5px 5px #2c2c2c;
   text-align: center;
   top: 0;
   left: 0;
@@ -598,46 +629,20 @@ footer {
   font-family: "Permanent Marker";
   font-size: 1.4rem;
   margin-bottom: 10px;
-  text-shadow: 1px 1px black, -1px 1px black, 3px 3px 3px black;
+  text-shadow: 1px 1px #2c2c2c, -1px 1px #2c2c2c, 3px 3px 3px #2c2c2c;
 }
 .drink .back__ingredients, .drink .back__instructions {
-  color: black;
+  color: #2c2c2c;
   background-color: #eee;
   padding: 20px;
-  -webkit-box-shadow: 5px 5px 10px black;
-          box-shadow: 5px 5px 10px black;
+  -webkit-box-shadow: 5px 5px 10px #2c2c2c;
+          box-shadow: 5px 5px 10px #2c2c2c;
   border-radius: 5px;
 }
 .drink .back__ingredients {
   list-style-type: "– ";
   padding-left: 30px;
   margin-bottom: 20px;
-}
-.drink__button {
-  background: none;
-  border: none;
-  color: #ff950a;
-  font-size: 5rem;
-  z-index: 11;
-  -ms-flex-item-align: center;
-      align-self: center;
-  cursor: pointer;
-  text-shadow: 0px 10px 10px #FF8327;
-  position: relative;
-  top: 0px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.drink__button:hover, .drink__button:focus {
-  color: #FFC60D;
-  text-shadow: 0px 10px 10px #588DC0;
-}
-.drink__button:active {
-  text-shadow: 0px 5px 5px #588DC0;
-  top: 5px;
-}
-.drink__button--hidden {
-  opacity: 0;
 }
 
 .drink__pic--current {
@@ -701,7 +706,7 @@ input[type=radio]:focus + label {
 input[type=radio]:checked + label {
   -webkit-animation: switcher 0.7s forwards;
           animation: switcher 0.7s forwards;
-  color: white;
+  color: #fff;
 }
 
 input[type=text] {
@@ -748,6 +753,7 @@ label {
   transition: all 0.2s;
   position: relative;
   top: 0px;
+  cursor: pointer;
 }
 .form__button:active {
   background-color: rgba(5, 175, 193, 0.5);
