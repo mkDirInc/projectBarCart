@@ -154,7 +154,7 @@ cocktailApp.displayDrinks = function (data) {
   // giving the first child element (li) a class of "drink__pic--current"
   const firstDrink = cocktailApp.drinksList.children[0]
   firstDrink.classList.add('drink__pic--current');
-  cocktailApp.changeDrinkSectionHeight(firstDrink);
+  cocktailApp.adjustDrinkSectionHeight(firstDrink);
 
   cocktailApp.carouselButtons.forEach(button => {
     // adding function to show button on the page once results are found
@@ -178,7 +178,7 @@ cocktailApp.displayDrinks = function (data) {
         newIndex = 0;
       }
       picList[newIndex].classList.add('drink__pic--current');
-      cocktailApp.changeDrinkSectionHeight(picList[newIndex]);
+      cocktailApp.adjustDrinkSectionHeight(picList[newIndex]);
       currentPic.classList.remove('drink__pic--current');
     })
   })
@@ -205,7 +205,7 @@ cocktailApp.changeFlipClasses = function(drinkElement) {
     cardBack.querySelector('.back__recipe').classList.toggle('back__recipe--flipped');
     cardBack.querySelector('.back__title').classList.toggle('back__title--flipped');
   }, 1);
-  cocktailApp.changeDrinkSectionHeight(drinkElement);
+  cocktailApp.adjustDrinkSectionHeight(drinkElement);
 }
 
 // This confirms that the cached drinked data is complete before passing it along fillCardBack().
@@ -286,14 +286,14 @@ cocktailApp.fillCardBack = function (cardBack, thisDrink) {
 }
 
 // Changes the height of the drink section based on the size of the card being flipped to.
-cocktailApp.changeDrinkSectionHeight = function(element) {
+cocktailApp.adjustDrinkSectionHeight = function(element) {
   let frontFacingCard;
   if (element.classList.contains('drink--flipped')) {
     frontFacingCard = element.querySelector('.back');
-    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.3}px`;
+    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.5}px`;
   } else {
     frontFacingCard = element.querySelector('.front');
-    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 1.5}px`;
+    this.drinkSection.style.height = `${frontFacingCard.clientHeight * 2.5}px`;
   }
 }
 

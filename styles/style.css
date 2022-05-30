@@ -438,8 +438,8 @@ footer {
   color: #ff950a;
   font-size: 5rem;
   z-index: 11;
-  -ms-flex-item-align: center;
-      align-self: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   cursor: pointer;
   text-shadow: 0px 10px 10px #FF8327;
   position: relative;
