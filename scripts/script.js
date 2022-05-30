@@ -43,38 +43,37 @@ cocktailApp.prepareSubmitListener = function () {
     e.preventDefault();
     
     fetch(this.getFetchURL())
-      .then((res) => {
+    .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           throw new Error(
             `We couldn't find anything that matched your search term. How about a random cocktail?`
-          );
-        }
-      })
-      .then((drinkData) => {
+            );
+          }
+        })
+        .then((drinkData) => {
         cocktailApp.displayDrinks(drinkData);
       })
       .catch((err) => {
         cocktailApp.displayPopup();
       });
-  });
+    });
 };
 
-// adding pop-up function
+// Displays a pop up that lets the user that no search results were found. Clicking on the displayed button fetches a random cocktail.
 cocktailApp.displayPopup = function () {
+  this.drinksList.innerHTML = '';
   this.popup.classList.remove('popup__container--hidden')
   
   this.popupButton.addEventListener('click', () => {
-  
-  this.getRandomCocktail();
-  this.popup.classList.add('popup__container--hidden');
-
+    this.getRandomCocktail();
+    this.popup.classList.add('popup__container--hidden');
   })
 }
 
+// Does what it says!
 cocktailApp.getRandomCocktail = function() {
-  
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
     .then((res) => {
       if (res.ok) {
@@ -197,6 +196,7 @@ cocktailApp.handleCardClick = function () {
   }
 };
 
+// Changes the classes on a flipping card to animate it.
 cocktailApp.changeFlipClasses = function(drinkElement) {
   drinkElement.classList.toggle('drink--flipped');
   
@@ -297,6 +297,7 @@ cocktailApp.changeDrinkSectionHeight = function(element) {
   }
 }
 
+// Supplies class names based on length of drink name.
 cocktailApp.getCardBackFontClass = function(strDrink) {
   if (strDrink.length < 10) return 'back__name--short';
   if (strDrink.length < 14) return 'back__name--medium';
