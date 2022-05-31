@@ -357,7 +357,7 @@ input[type=radio] {
   }
 }
 header {
-  min-height: 40vh;
+  min-height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
