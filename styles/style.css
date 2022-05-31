@@ -252,10 +252,6 @@ button {
   font-family: "Permanent Marker", Verdana, Geneva, Tahoma, sans-serif;
 }
 
-* {
-  outline: 1px solid red;
-}
-
 body {
   position: relative;
   min-height: 100vh;
