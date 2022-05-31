@@ -5,10 +5,10 @@ cocktailApp.searchTypes.name = '/api/json/v1/1/search.php?s=';
 cocktailApp.searchTypes.ingredient = '/api/json/v1/1/filter.php?i=';
 cocktailApp.endpoint = 'https://www.thecocktaildb.com';
 cocktailApp.form = document.querySelector('form');
-cocktailApp.drinkSection = document.querySelector('.drinks')
-cocktailApp.drinksList = document.querySelector('.drinks__list');
 cocktailApp.searchBar = document.getElementById('search-bar');
 cocktailApp.submitButton = cocktailApp.form.querySelector('button');
+cocktailApp.drinkSection = document.querySelector('.drinks')
+cocktailApp.drinksList = document.querySelector('.drinks__list');
 cocktailApp.popup = document.querySelector('.popup__container');
 cocktailApp.popupButton = cocktailApp.popup.querySelector('.popup__button');
 cocktailApp.carouselButtons = document.querySelectorAll('[data-button]');
@@ -147,29 +147,18 @@ cocktailApp.displayDrinks = function (data) {
 
     // Add an event listener and append to the page
     listElement.addEventListener('click', cocktailApp.handleCardClick);
-    listElement.addEventListener('keyup',function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        const cardBack = this.querySelector('.back');
-        // If the cardback has no content, send it through control flow that confirms the data, then displays it.
-        if (cardBack.childElementCount === 0) {
-          cocktailApp.confirmDrinkData(this.id, cardBack);
-        } else {
-        // Otherwise, change element classes to animate flip.
-        cocktailApp.changeFlipClasses(this);
-        }
-      } 
-    })
-    listElement.addEventListener('focus', function(e) {
-      const currentPic = document.querySelector('.drink--current');
-      currentPic.classList.remove('drink--current');
-      this.classList.add('drink--current');
-    })
+    listElement.addEventListener('keyup', cocktailApp.handleKeyup);
+    listElement.addEventListener('focus', cocktailApp.handleFocus);
     this.drinksList.append(listElement);
     // Reveal section heading
     this.drinkSectionHeading.classList.remove('drinks__heading--hidden');
   });
 
-  // carousel function
+  this.prepareCarousel();
+};
+
+// carousel function, adapted from Web Dev Simplified tutorial
+cocktailApp.prepareCarousel = function () {
   // giving the first child element (li) a class of "drink--current"
   const firstDrink = cocktailApp.drinksList.children[0]
   firstDrink.classList.add('drink--current');
@@ -201,9 +190,11 @@ cocktailApp.displayDrinks = function (data) {
       currentPic.classList.remove('drink--current');
     })
   })
-};
+}
 
-// This callback function supplied to card event listeners.
+
+// This callback function supplied to card event listeners to fill card back and flip card
+// 3D card adapted from Kevin Powell tutorial
 cocktailApp.handleCardClick = function () {
   const cardBack = this.querySelector('.back');
   // If the cardback has no content, send it through control flow that confirms the data, then displays it.
@@ -214,6 +205,25 @@ cocktailApp.handleCardClick = function () {
   cocktailApp.changeFlipClasses(this);
   }
 };
+
+cocktailApp.handleKeyup = function (e) {
+  if (e.key === 'Enter') {
+    const cardBack = this.querySelector('.back');
+    // If the cardback has no content, send it through control flow that confirms the data, then displays it.
+    if (cardBack.childElementCount === 0) {
+      cocktailApp.confirmDrinkData(this.id, cardBack);
+    } else {
+    // Otherwise, change element classes to animate flip.
+    cocktailApp.changeFlipClasses(this);
+    }
+  } 
+}
+
+cocktailApp.handleFocus = function (e) {
+  const currentPic = document.querySelector('.drink--current');
+  currentPic.classList.remove('drink--current');
+  this.classList.add('drink--current');
+}
 
 // Changes the classes on a flipping card to animate it.
 cocktailApp.changeFlipClasses = function(drinkElement) {

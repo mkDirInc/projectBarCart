@@ -482,7 +482,6 @@ footer {
           perspective: 1000px;
   border-radius: 15px;
   opacity: 0;
-  display: none;
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
@@ -491,11 +490,10 @@ footer {
   transition: opacity 0.5s ease-in-out;
 }
 .drink--current {
-  display: unset;
   opacity: 1;
   z-index: 10;
 }
-.drink--current + li {
+.drink--current > div > div > div > img {
   display: block;
 }
 .drink--flipped .drink__content {
@@ -514,8 +512,9 @@ footer {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
 }
-.drink .front,
-.drink .back {
+
+.front,
+.back {
   border-radius: 15px;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -529,10 +528,11 @@ footer {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center/cover;
-  -webkit-box-shadow: 5px 10px 10px #2c2c2c, inset 2px 3px 5px #fff, inset -2px -3px 5px #2c2c2c;
-          box-shadow: 5px 10px 10px #2c2c2c, inset 2px 3px 5px #fff, inset -2px -3px 5px #2c2c2c;
+  -webkit-box-shadow: 5px 10px 10px #111, inset 2px 3px 5px #fff, inset -2px -3px 5px #111;
+          box-shadow: 5px 10px 10px #111, inset 2px 3px 5px #fff, inset -2px -3px 5px #111;
 }
-.drink .front {
+
+.front {
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
   text-align: center;
@@ -552,34 +552,35 @@ footer {
       -ms-flex-align: center;
           align-items: center;
 }
-.drink .front__img {
+.front__img {
   width: 80%;
   height: auto;
   -o-object-fit: fill;
      object-fit: fill;
   margin: 20px auto;
   border-radius: 15px;
-  -webkit-box-shadow: 5px 5px 10px #2c2c2c, -1px -1px 10px #2c2c2c;
-          box-shadow: 5px 5px 10px #2c2c2c, -1px -1px 10px #2c2c2c;
+  -webkit-box-shadow: 5px 5px 10px #111, -1px -1px 10px #111;
+          box-shadow: 5px 5px 10px #111, -1px -1px 10px #111;
   -webkit-transform: rotate(5deg) translateZ(50px);
           transform: rotate(5deg) translateZ(50px);
 }
-.drink .front__name {
+.front__name {
   display: block;
   font-family: "Mr Dafoe";
   color: #FFC60D;
-  text-shadow: 3px 3px #588DC0, 5px 5px 3px #2c2c2c;
+  text-shadow: 3px 3px #588DC0, 5px 5px 3px #111;
   font-size: 2.5rem;
   padding: 3px 10px;
   -webkit-transform: rotate(-5deg) translateZ(50px);
           transform: rotate(-5deg) translateZ(50px);
 }
-.drink .back {
+
+.back {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   padding: 0 1.5rem 2rem;
 }
-.drink .back__title {
+.back__title {
   opacity: 0;
   -webkit-transform: translateY(100px) translateZ(50px);
           transform: translateY(100px) translateZ(50px);
@@ -588,12 +589,12 @@ footer {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
 }
-.drink .back__title--flipped {
+.back__title--flipped {
   opacity: 1;
   -webkit-transform: translateY(0px) translateZ(50px);
           transform: translateY(0px) translateZ(50px);
 }
-.drink .back__recipe {
+.back__recipe {
   opacity: 0;
   -webkit-transform: translateY(-100px) translateZ(50px);
           transform: translateY(-100px) translateZ(50px);
@@ -602,28 +603,29 @@ footer {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
 }
-.drink .back__recipe--flipped {
+.back__recipe--flipped {
   opacity: 1;
   -webkit-transform: translateY(0px) translateZ(50px);
           transform: translateY(0px) translateZ(50px);
 }
-.drink .back__img {
+.back__img {
+  display: none;
   width: 100%;
   margin: 0 auto -40% auto;
   border-radius: 50%;
   -webkit-transform: rotate(20deg) translate(-15%, -40%);
           transform: rotate(20deg) translate(-15%, -40%);
-  -webkit-box-shadow: 5px 5px 10px #2c2c2c;
-          box-shadow: 5px 5px 10px #2c2c2c;
+  -webkit-box-shadow: 5px 5px 10px #111;
+          box-shadow: 5px 5px 10px #111;
 }
-.drink .back__name {
+.back__name {
   position: absolute;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   font-family: "Mr Dafoe";
   color: #FFC60D;
-  text-shadow: 3px 3px #588DC0, 5px 5px 5px #2c2c2c;
+  text-shadow: 3px 3px #588DC0, 5px 5px 5px #111;
   text-align: center;
   top: 0;
   left: 0;
@@ -631,41 +633,41 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
-.drink .back__name--xlong {
+.back__name--xlong {
   font-size: 2.2rem;
   -webkit-transform: rotate(-10deg) translateY(-60px);
           transform: rotate(-10deg) translateY(-60px);
 }
-.drink .back__name--long {
+.back__name--long {
   font-size: 2.2rem;
   -webkit-transform: rotate(-10deg) translateY(-50px);
           transform: rotate(-10deg) translateY(-50px);
 }
-.drink .back__name--medium {
+.back__name--medium {
   font-size: 3rem;
   -webkit-transform: rotate(-10deg) translateY(-50px);
           transform: rotate(-10deg) translateY(-50px);
 }
-.drink .back__name--short {
+.back__name--short {
   font-size: 3rem;
   -webkit-transform: rotate(-10deg) translateY(-45px);
           transform: rotate(-10deg) translateY(-45px);
 }
-.drink .back__heading {
+.back__heading {
   font-family: "Permanent Marker";
   font-size: 1.4rem;
   margin-bottom: 10px;
-  text-shadow: 1px 1px #2c2c2c, -1px 1px #2c2c2c, 3px 3px 3px #2c2c2c;
+  text-shadow: 1px 1px #111, -1px 1px #111, 3px 3px 3px #111;
 }
-.drink .back__ingredients, .drink .back__instructions {
-  color: #2c2c2c;
+.back__ingredients, .back__instructions {
+  color: #111;
   background-color: #eee;
   padding: 20px;
-  -webkit-box-shadow: 5px 5px 10px #2c2c2c;
-          box-shadow: 5px 5px 10px #2c2c2c;
+  -webkit-box-shadow: 5px 5px 10px #111;
+          box-shadow: 5px 5px 10px #111;
   border-radius: 5px;
 }
-.drink .back__ingredients {
+.back__ingredients {
   list-style-type: "– ";
   padding-left: 30px;
   margin-bottom: 20px;
@@ -762,7 +764,7 @@ label:hover, label:focus {
   -webkit-box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
           box-shadow: 0px 20px 20px rgba(88, 141, 192, 0.5);
   top: 5px;
-  color: #2c2c2c;
+  color: #111;
 }
 
 .search-type {
@@ -843,8 +845,8 @@ label:hover, label:focus {
   -ms-flex-item-align: start;
       align-self: flex-start;
   gap: 20px;
-  -webkit-box-shadow: 3px 3px 3px #2c2c2c, inset 3px 3px 3px #fff, inset -3px -3px 3px #2c2c2c;
-          box-shadow: 3px 3px 3px #2c2c2c, inset 3px 3px 3px #fff, inset -3px -3px 3px #2c2c2c;
+  -webkit-box-shadow: 3px 3px 3px #111, inset 3px 3px 3px #fff, inset -3px -3px 3px #111;
+          box-shadow: 3px 3px 3px #111, inset 3px 3px 3px #fff, inset -3px -3px 3px #111;
 }
 .popup__container--hidden {
   -webkit-transform: scale(0.1);
@@ -880,7 +882,7 @@ label:hover, label:focus {
   -webkit-box-shadow: 0px 5px 5px rgba(234, 89, 62, 0.5);
           box-shadow: 0px 5px 5px rgba(234, 89, 62, 0.5);
   top: 5px;
-  color: #2c2c2c;
+  color: #111;
 }
 
 .popup__alert {
@@ -928,6 +930,6 @@ label:hover, label:focus {
       align-self: center;
 }
 .popup__alert .alert__text {
-  color: #2c2c2c;
+  color: #111;
   font-size: 2rem;
 }

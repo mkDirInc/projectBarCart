@@ -62,18 +62,16 @@
   perspective: 1000px;
   border-radius: 15px;
   opacity: 0;
-  display: none;
   left: 50%;
   transform: translate(-50%);
   cursor: pointer;
   transition: opacity .5s ease-in-out;
   &--current {
-    display: unset;
     opacity: 1;
     z-index: 10;
-  }
-  &--current + li {
-    display: block;
+    & > div > div > div > img {
+      display: block;
+    }
   }
   &--flipped &__content {
     transform: rotateY(180deg);
@@ -86,130 +84,128 @@
     transition: transform 1s;
     transform-style: preserve-3d;
   }
-
-  .front,
-  .back {
-    border-radius: 15px;
-    transform-style: preserve-3d;
-    width: fit-content;
-    height: fit-content;
-    position: absolute;
-    backface-visibility: hidden;
-    background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center / cover;
-    box-shadow: 5px 10px 10px $black,
-    inset 2px 3px 5px $white,
-    inset -2px -3px 5px $black;
-  }
-
-  .front {
-    transform: rotateY(0deg);
-    text-align: center;
-    width: 300px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &__img {
-      width: 80%;
-      height: auto;
-      object-fit: fill;
-      margin: 20px auto;
-      border-radius: 15px;
-      box-shadow: 5px 5px 10px $black,
-                  -1px -1px 10px $black;
-      transform: rotate(5deg) translateZ(50px);
-    }
-    &__name {
-      display: block;
-      font-family: 'Mr Dafoe';
-      color: $summerYellow;
-      text-shadow: 3px 3px $teal, 5px 5px 3px $black;
-      font-size: 2.5rem;
-      padding: 3px 10px;
-      transform: rotate(-5deg) translateZ(50px);
-    }
-  }
-
-  .back {
-    transform: rotateY(180deg);
-    padding: 0 1.5rem 2rem;
-    &__title {
-      opacity: 0;
-      transform: translateY(100px) translateZ(50px);
-      transition: opacity .5s ease-out, transform .5s ease-out;
-      &--flipped {
-        opacity: 1;
-        transform: translateY(0px) translateZ(50px);
-      }
-    }
-    &__recipe {
-      opacity: 0;
-      transform: translateY(-100px) translateZ(50px);
-      transition: opacity .5s ease-out, transform .5s ease-out;
-      &--flipped {
-        opacity: 1;
-        transform: translateY(0px) translateZ(50px);
-      }
-    }
-    &__img {
-      width: 100%;
-      margin: 0 auto -40% auto;
-      border-radius: 50%;
-      transform: rotate(20deg) translate(-15%, -40%);
-      box-shadow: 5px 5px 10px $black;
-    }
-    &__name {
-      position: absolute;
-      width: fit-content;
-      font-family: 'Mr Dafoe';
-      color: $summerYellow;
-      text-shadow: 3px 3px $teal,
-                  5px 5px 5px $black;
-      text-align: center;
-      top: 0;
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      &--xlong {
-        font-size: 2.2rem;
-        transform: rotate(-10deg) translateY(-60px);
-      }
-      &--long {
-        font-size: 2.2rem;
-        transform: rotate(-10deg) translateY(-50px);
-      }
-      &--medium {
-        font-size: 3rem;
-        transform: rotate(-10deg) translateY(-50px);
-      }
-      &--short {
-        font-size: 3rem;
-        transform: rotate(-10deg) translateY(-45px);
-      }
-    }
-    &__heading {
-      font-family: 'Permanent Marker';
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      text-shadow: 1px 1px $black,
-                  -1px 1px $black,
-                  3px 3px 3px $black;
-    }
-    &__ingredients,
-    &__instructions {
-      color: $black;
-      background-color: $offWhite;
-      padding: 20px;
-      box-shadow: 5px 5px 10px $black;
-      border-radius: 5px;
-    }
-    &__ingredients {
-      list-style-type: '– ';
-      padding-left: 30px;
-      margin-bottom: 20px;
-    }
-  }
 }
 
+.front,
+.back {
+  border-radius: 15px;
+  transform-style: preserve-3d;
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  backface-visibility: hidden;
+  background: url(../assets/manoj-kumar-bricks.jpg) no-repeat center / cover;
+  box-shadow: 5px 10px 10px $black,
+  inset 2px 3px 5px $white,
+  inset -2px -3px 5px $black;
+}
+.front {
+  transform: rotateY(0deg);
+  text-align: center;
+  width: 300px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__img {
+    width: 80%;
+    height: auto;
+    object-fit: fill;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px $black,
+                -1px -1px 10px $black;
+    transform: rotate(5deg) translateZ(50px);
+  }
+  &__name {
+    display: block;
+    font-family: 'Mr Dafoe';
+    color: $summerYellow;
+    text-shadow: 3px 3px $teal, 5px 5px 3px $black;
+    font-size: 2.5rem;
+    padding: 3px 10px;
+    transform: rotate(-5deg) translateZ(50px);
+  }
+}
+.back {
+  transform: rotateY(180deg);
+  padding: 0 1.5rem 2rem;
+  &__title {
+    opacity: 0;
+    transform: translateY(100px) translateZ(50px);
+    transition: opacity .5s ease-out, transform .5s ease-out;
+    &--flipped {
+      opacity: 1;
+      transform: translateY(0px) translateZ(50px);
+    }
+  }
+  &__recipe {
+    opacity: 0;
+    transform: translateY(-100px) translateZ(50px);
+    transition: opacity .5s ease-out, transform .5s ease-out;
+    &--flipped {
+      opacity: 1;
+      transform: translateY(0px) translateZ(50px);
+    }
+  }
+  &__img {
+    display: none;
+    width: 100%;
+    margin: 0 auto -40% auto;
+    border-radius: 50%;
+    transform: rotate(20deg) translate(-15%, -40%);
+    box-shadow: 5px 5px 10px $black;
+  }
+  &__name {
+    position: absolute;
+    width: fit-content;
+    font-family: 'Mr Dafoe';
+    color: $summerYellow;
+    text-shadow: 3px 3px $teal,
+                5px 5px 5px $black;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    &--xlong {
+      font-size: 2.2rem;
+      transform: rotate(-10deg) translateY(-60px);
+    }
+    &--long {
+      font-size: 2.2rem;
+      transform: rotate(-10deg) translateY(-50px);
+    }
+    &--medium {
+      font-size: 3rem;
+      transform: rotate(-10deg) translateY(-50px);
+    }
+    &--short {
+      font-size: 3rem;
+      transform: rotate(-10deg) translateY(-45px);
+    }
+  }
+  &__heading {
+    font-family: 'Permanent Marker';
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px $black,
+                -1px 1px $black,
+                3px 3px 3px $black;
+  }
+  &__ingredients,
+  &__instructions {
+    color: $black;
+    background-color: $offWhite;
+    padding: 20px;
+    box-shadow: 5px 5px 10px $black;
+    border-radius: 5px;
+  }
+  &__ingredients {
+    list-style-type: '– ';
+    padding-left: 30px;
+    margin-bottom: 20px;
+  }
+}
