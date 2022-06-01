@@ -26,6 +26,7 @@
   }
   &__list {
     position: relative;
+    width: 100%;
   }
   &__button {
     background: none;
@@ -69,7 +70,13 @@
   &--current {
     opacity: 1;
     z-index: 10;
-    & > div > div > div > img {
+    & + li {
+      opacity: 0.1;
+    }
+    & > div > div > img {
+      display: block;
+    }
+    & + li > div > div > img {
       display: block;
     }
   }
@@ -109,6 +116,7 @@
   justify-content: center;
   align-items: center;
   &__img {
+    display: none;
     width: 80%;
     height: auto;
     object-fit: fill;

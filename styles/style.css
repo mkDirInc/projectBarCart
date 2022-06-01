@@ -252,6 +252,10 @@ button {
   font-family: "Permanent Marker", Verdana, Geneva, Tahoma, sans-serif;
 }
 
+* {
+  outline: 1px solid red;
+}
+
 body {
   position: relative;
   min-height: 100vh;
@@ -445,6 +449,7 @@ footer {
 }
 .drinks__list {
   position: relative;
+  width: 100%;
 }
 .drinks__button {
   background: none;
@@ -493,7 +498,13 @@ footer {
   opacity: 1;
   z-index: 10;
 }
-.drink--current > div > div > div > img {
+.drink--current + li {
+  opacity: 0.1;
+}
+.drink--current > div > div > img {
+  display: block;
+}
+.drink--current + li > div > div > img {
   display: block;
 }
 .drink--flipped .drink__content {
@@ -553,6 +564,7 @@ footer {
           align-items: center;
 }
 .front__img {
+  display: none;
   width: 80%;
   height: auto;
   -o-object-fit: fill;
